@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Form Example</title>
+<style type="text/css">
+body {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; 
+      background-color:#F96;
+      margin-left: 30%;
+      margin-right: 40%;
+}
+.center { margin-left:+10%; }
+
+</style>
+<script type="text/javascript">
+function validate(form) {
+	return true;
+				  }
+</script>
+</head>
+
+<body>
+<h2> Welcome to My Site<br/>
+&nbsp;&nbsp;Please sign in </h2>
+<br/><br/>
+<form name="myForm" method="post" action="form1Example.php" onsubmit="return validate(this)" >
+Username:
+<input type="text" name="username" size="12" maxlength="12" value="" />
+<br/><br/>
+Password:
+<input type="password" name="pw" size="12" maxlength="15" value="" />
+<br/><br/>
+<div class="center">
+<input type="submit" value="Sign in" />
+</div>
+</form>
+ 
+</body>
+</html>
