@@ -1,0 +1,89 @@
+/* CSS Document */
+body{
+	background-color: #051c38;
+}
+#divLogoHeader{
+	background-color: #051c38;
+}
+#step_bubbles{
+	padding: 0.8%;
+	background-color: #006A00;
+}
+#MainForm{
+	background-color: #FFFFFF;
+}
+@media screen and (max-width: 576px){
+	#divLogoHeader{
+		background-color: #051c38;
+		position:absolute;
+		left:0;
+		right:0;
+	}
+}
+@media screen and (min-width: 577px){
+	.push-left{
+		padding-left: 25px;
+	}
+	.push-right{
+		padding-right: 25px;
+	}
+}
+@media screen and (min-width: 768px){
+	#btnNext{
+		margin-left: -25px;
+	}
+	#btnPrev{
+		margin-right: -25px;
+	}
+}
+@media screen and (max-width: 576px){
+	#deceasedHeader{
+		margin-top: 12vw;
+	}	
+}
+
+
+/* 
+     _______. __    _______ .__   __.     __  .__   __. 
+    /       ||  |  /  _____||  \ |  |    |  | |  \ |  | 
+   |   (----`|  | |  |  __  |   \|  |    |  | |   \|  | 
+    \   \    |  | |  | |_ | |  . `  |    |  | |  . `  | 
+.----)   |   |  | |  |__| | |  |\   |    |  | |  |\   | 
+|_______/    |__|  \______| |__| \__|    |__| |__| \__| 
+                                                        
+*/
+
+.login-header{
+    background-color: #182d47;
+	border-radius: 0%;	
+}
+.icon-green{
+	color: #137513;
+}
+.loginWrapper{
+	background-color:#FFFFFF;
+	border-radius: 15px;
+	display: inline-block;
+}
+.btn-green{
+	background-color: #137513;
+	color: #FFFFFF;
+}
+#bannerName{
+	color: #182d47;
+}
+
+@media screen and (min-width: 577px){
+	.loginWrapper{
+		margin-top: 8vw;
+	}
+}
+
+@media screen and (max-width: 576px){
+	body{
+		background-color: #FFFFFF;
+	}
+	.loginWrapper{
+		border-radius: 0px;
+	}
+}
