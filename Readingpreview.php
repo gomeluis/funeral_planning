@@ -43,8 +43,6 @@
         mysql_select_db($dbname, $conn);
         mysql_set_charset('utf8');
         mysql_select_db('dbfuneral');
-
-
         ?> 
 
         <div class="container container1S">
@@ -55,67 +53,71 @@
                         <div class="w-10 herdre1" id="divLogoHeader">
                             <img class="img-fluid" src="images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
                         </div>
+                        <br/>
                     </div> <!-- /col-12 -->
 
                 </div>
                 <br/>
                 <h2 class="text-center"> <?php
-                    if ($_POST['frp']) {
-                        $requst = $_REQUEST['freading'];
-                        $fRquery = "Select  vchar_title,  longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
-                        $fRresult = mysql_query($fRquery);
-                        while ($row = mysql_fetch_array($fRresult)) {
-                            $fR_Title = $row["vchar_title"];
-                            $fR_text = $row["longtext_read_Text"];
-                            echo "$fR_Title<br><br>";
+        if ($_POST['frp']) {
+            $requst = $_REQUEST['freading'];
+            $fRquery = "Select  vchar_title,  longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
+            $fRresult = mysql_query($fRquery);
+            while ($row = mysql_fetch_array($fRresult)) {
+                $fR_Title = $row["vchar_title"];
+                $fR_text = $row["longtext_read_Text"];
+                echo "$fR_Title<br><br>";
 
-                            echo "$fR_text\n";
-                        }
-                    } elseif ($_POST['srp']) {
-                        $requst = $_REQUEST['sreading'];
-                        $sRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
-                        $sRresult = mysql_query($sRquery);
-                        while ($row = mysql_fetch_array($sRresult)) {
-                            $sR_Title = $row["vchar_title"];
+                echo "$fR_text\n";
+            }
+        } elseif ($_POST['srp']) {
+            $requst = $_REQUEST['sreading'];
+            $sRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
+            $sRresult = mysql_query($sRquery);
+            while ($row = mysql_fetch_array($sRresult)) {
+                $sR_Title = $row["vchar_title"];
 
-                            $sR_text = $row["longtext_read_Text"];
-                            echo "$sR_Title<br><br>";
+                $sR_text = $row["longtext_read_Text"];
+                echo "$sR_Title<br><br>";
 
-                            echo "$sR_text\n";
-                        }
-                    } elseif ($_POST['grp']) {
-                        $requst = $_REQUEST['greading'];
-                        $gRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
-                        $gRresult = mysql_query($gRquery);
-                        while ($row = mysql_fetch_array($gRresult)) {
-                            $gR_Title = $row["vchar_title"];
+                echo "$sR_text\n";
+            }
+        } elseif ($_POST['grp']) {
+            $requst = $_REQUEST['greading'];
+            $gRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
+            $gRresult = mysql_query($gRquery);
+            while ($row = mysql_fetch_array($gRresult)) {
+                $gR_Title = $row["vchar_title"];
 
-                            $gR_text = $row["longtext_read_Text"];
+                $gR_text = $row["longtext_read_Text"];
 
-                            
-                           $g_full_text = "$gR_Title<br><br>"."$gR_text\n";
-                            $_SESSION["g_reading"]= $g_full_text;
-                            echo $_SESSION["g_reading"];
-                           
-                        }
-                  
-                    }
-                    ?></h2>
-                <div class="row">
-                    <div class="col-lg-6 col-xs-12">
+
+                $g_full_text = "$gR_Title<br><br>" . "$gR_text\n";
+                $_SESSION["g_reading"] = $g_full_text;
+                echo $_SESSION["g_reading"];
+            }
+        }
+        ?></h2>
+                <br/>
+                    <div class ="container w-50">
+                    <div class="col-lg-12 col-xs-12">
                         <div >
-                            <input type="submit" class="btn btn-lg btn-block btn-green" value="Go back">
+                            <input type="submit" class="btn btn-lg btn-block btn-green hidden-print" value="Go back">
+                        </div>
+                        <br/>
+                    </div>
+                    </div>
+                </form>
+            <div class ="container w-50">
+                    <div class="col-lg-12 col-xs-12">
+                        <div >
+                            <input type="submit" onclick="printpage()" class="btn btn-lg btn-block btn-green hidden-print" formaction="Readingpreview.php"  value="Print"> 
+
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xs-12">
-                        <div >
-                            <input type="submit" onclick="printpage()" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php"  value="Print"> 
-                       
-                        </div>
-                    </div>
-                </div>
+            </div>
                 <br/><br/>
-            </form>
+           
         </div> <!--END container -->
     </body>
 </html>
