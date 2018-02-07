@@ -1,6 +1,9 @@
-<html>
+<!doctype html>
+
+<html lang="en">
     <head>
-        <meta  content="tex/html"charset="UTF-8">
+        <!-- <meta  content="tex/html"charset="UTF-8">-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title> Reading</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -12,6 +15,11 @@
         <!-- FontAwesome JS links -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
         <!-- End FontAwesome JS links -->
+        <script>
+            function printpage() {
+                window.print();
+            }
+        </script>
 
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid Serif">
@@ -26,12 +34,17 @@
     </head>
     <body>
         <?php
+        session_start();
         $server = "funeralinstance.cfg8tyxsms9d.us-east-2.rds.amazonaws.com";
         $username = "funeral";
         $password = "admin123";
         $dbname = 'dbfuneral';
         $conn = mysql_connect($server, $username, $password) or die("Error connecting to server: " . mysql_error());
         mysql_select_db($dbname, $conn);
+        mysql_set_charset('utf8');
+        mysql_select_db('dbfuneral');
+
+
         ?> 
 
         <div class="container container1S">
@@ -43,54 +56,66 @@
                             <img class="img-fluid" src="images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
                         </div>
                     </div> <!-- /col-12 -->
-                    <div class="row"> <!-- row -->
-                        <div class="col-12 hidden-xs-down"> <!-- col-12 -->
-                            <div class="w-100 text-center" id="step_bubbles">
-                                <img class="w-50 img-fluid" src="images/step-bubbles-1.png" alt="Step 1 of 6">
-                            </div>
-                        </div> <!-- /col-12 -->
-                    </div>
+
                 </div>
                 <br/>
                 <h2 class="text-center"> <?php
                     if ($_POST['frp']) {
                         $requst = $_REQUEST['freading'];
-                        $fRquery = "Select  longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
+                        $fRquery = "Select  vchar_title,  longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
                         $fRresult = mysql_query($fRquery);
                         while ($row = mysql_fetch_array($fRresult)) {
+                            $fR_Title = $row["vchar_title"];
+                            $fR_text = $row["longtext_read_Text"];
+                            echo "$fR_Title<br><br>";
 
-                            $fR_Title = $row["longtext_read_Text"];
-
-                            echo "$fR_Title\n";
+                            echo "$fR_text\n";
                         }
                     } elseif ($_POST['srp']) {
                         $requst = $_REQUEST['sreading'];
-                        $sRquery = "Select  longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
+                        $sRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
                         $sRresult = mysql_query($sRquery);
                         while ($row = mysql_fetch_array($sRresult)) {
+                            $sR_Title = $row["vchar_title"];
 
-                            $sR_Title = $row["longtext_read_Text"];
+                            $sR_text = $row["longtext_read_Text"];
+                            echo "$sR_Title<br><br>";
 
-                            echo "$sR_Title\n";
+                            echo "$sR_text\n";
                         }
                     } elseif ($_POST['grp']) {
                         $requst = $_REQUEST['greading'];
-                        $gRquery = "Select  longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
+                        $gRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
                         $gRresult = mysql_query($gRquery);
                         while ($row = mysql_fetch_array($gRresult)) {
+                            $gR_Title = $row["vchar_title"];
 
-                            $gR_Title = $row["longtext_read_Text"];
+                            $gR_text = $row["longtext_read_Text"];
 
-                            echo "$gR_Title\n";
+                            
+                           $g_full_text = "$gR_Title<br><br>"."$gR_text\n";
+                            $_SESSION["g_reading"]= $g_full_text;
+                            echo $_SESSION["g_reading"];
+                           
                         }
+                  
                     }
                     ?></h2>
-                <div class="col-lg-12 col-xs-12">
-                    <div >
-                        <input type="submit" class="btn btn-lg btn-block btn-green" value="Go back">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-12">
+                        <div >
+                            <input type="submit" class="btn btn-lg btn-block btn-green" value="Go back">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xs-12">
+                        <div >
+                            <input type="submit" onclick="printpage()" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php"  value="Print"> 
+                       
+                        </div>
                     </div>
                 </div>
+                <br/><br/>
             </form>
         </div> <!--END container -->
-</body>
+    </body>
 </html>

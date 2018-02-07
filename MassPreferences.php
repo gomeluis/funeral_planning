@@ -36,6 +36,8 @@
         $dbname = 'dbfuneral';
         $conn = mysql_connect($server, $username, $password) or die("Error connecting to server: " . mysql_error());
         mysql_select_db($dbname, $conn);
+        mysql_set_charset('utf8');
+        mysql_select_db('dbfuneral');
         ?>
 
         <div class="container">
@@ -118,13 +120,13 @@
                                 <div class="input-group input-group-lg push-left">
                                     <select class="form-control" name="freading">
                                         <?php
-                                        $fRquery = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'First Readings'";
+                                        $fRquery = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'First Readings' ORDER BY vchar_title ASC";
                                         $fRresult = mysql_query($fRquery);
                                         while ($row = mysql_fetch_array($fRresult)) {
                                             $fR_Title = $row["vchar_title"];
                                             echo "<option>
-                                                                                          $fR_Title
-                                                                                          </option>";
+                                                  $fR_Title
+                                                 </option>";
                                         }
                                         ?>
                                     </select>
@@ -191,7 +193,7 @@
                                 <div class="input-group input-group-lg push-left">
                                     <select class="form-control"  name="sreading">
                                         <?php
-                                        $second_Readings_query = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'New Testament'";
+                                        $second_Readings_query = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'second Readings' ORDER BY vchar_title ASC";
                                         $second_Readings_result = mysql_query($second_Readings_query);
                                         while ($row = mysql_fetch_array($second_Readings_result)) {
                                             $second_Readings_Title = $row["vchar_title"];
@@ -248,16 +250,16 @@
                                     <div class="col-lg-6 col-xs-12"><!--Lift Side Second Internal Row-->
                                         <div class="input-group input-group-lg push-left">
                                             <select class="form-control" name="greading">
-<?php
-$gospelReading_query = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'Gospel Reading'";
-$gospelReading_result = mysql_query($gospelReading_query);
-while ($row = mysql_fetch_array($gospelReading_result)) {
-    $gospelReading_Title = $row["vchar_title"];
-    echo "<option>
+                                                <?php
+                                                $gospelReading_query = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'Gospel Reading' ORDER BY vchar_title ASC";
+                                                $gospelReading_result = mysql_query($gospelReading_query);
+                                                while ($row = mysql_fetch_array($gospelReading_result)) {
+                                                    $gospelReading_Title = $row["vchar_title"];
+                                                    echo "<option>
                                                                                           $gospelReading_Title
                                                                                           </option>";
-}
-?>
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <br/>
