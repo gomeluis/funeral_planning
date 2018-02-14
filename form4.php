@@ -326,13 +326,13 @@
              <div class="row"> <!-- row -->
  				<div class="col-12 push-md-6 col-md-6"> <!-- col-12 col-md-6 -->
  					<div class="push-left push-right" id="btnNext">
- 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Next">
+ 						<input type="button" class="btn btn-lg btn-block btn-green" onclick="window.location.href='http://cpscserv.dom.edu/students/corncarl/funeraldemo/form5.php'" value="Next">
 					</div>
 					<br>
  				</div> <!-- /col-12 /col-md-6 -->
                 <div class="col-12 pull-md-6 col-md-6"> <!-- col-12 col-md-6 -->
  					<div class="push-right push-left" id="btnPrev">
- 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Previous">
+ 						<input type="button" class="btn btn-lg btn-block btn-green" onclick="window.location.href='http://cpscserv.dom.edu/students/corncarl/funeraldemo/form3.php'" value="Previous">
 					</div>
 					<br>
  				</div> <!-- /col-12 /col-md-6 -->
