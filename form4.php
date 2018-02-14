@@ -23,19 +23,21 @@
 </head>
 <body>
 <?php
-        session_start();
+         session_start();
         $server = "funeralinstance.cfg8tyxsms9d.us-east-2.rds.amazonaws.com";
         $username = "funeral";
         $password = "admin123";
         $dbname = 'dbfuneral';
         $conn = mysql_connect($server, $username, $password) or die("Error connecting to server: " . mysql_error());
         mysql_select_db($dbname, $conn);
+        
+	
         ?>
 
 
 
 <div class="container"> <!-- container -->
-	<form action="#" method="post">
+	<form action="form4.php" method="post">
 	
 	
 		<div class="row"> <!-- row -->
@@ -67,15 +69,15 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
- 						<select class="form-control" name="freading">
-                                        <?php
-                                        $fRquery = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Processional'";
-                                        $fRresult = mysql_query($fRquery);
+ 						<select class="form-control" name="opening_song">
+                                      <?php
+                                        $open_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Processional'";
+                                        $open_song_results = mysql_query($open_song_query);
 										
-                                        while ($row = mysql_fetch_array($fRresult)) {
-                                            $fR_Title = $row["vchar_song_Name"];
+                                        while ($row = mysql_fetch_array($open_song_results)) {
+                                            $open_song_Title = $row["vchar_song_Name"];
                                             echo "<option>
-                                                                                          $fR_Title
+                                                                                          $open_song_Title
                                                                                           </option>";
                                         }
                                         ?>
@@ -87,11 +89,12 @@
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="open_song" value="Preview">
 					</div>
 				<br>
 				<br>
-				</div> <!-- /col-12 /col-sm-6 -->					
+				</div> <!-- /col-12 /col-sm-6 -->	
+							
 			</div> <!-- /row -->		
 			
 			<div class="row"> <!-- row -->
@@ -100,15 +103,15 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
- 						<select class="form-control" name="freading">
-                                        <?php
-                                        $fRquery = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Responsorial Psalm'";
-                                        $fRresult = mysql_query($fRquery);
+ 						<select class="form-control" name="responsorial_song">
+                                         <?php
+                                        $res_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Processional'";
+                                        $res_song_results = mysql_query($res_song_query);
 										
-                                        while ($row = mysql_fetch_array($fRresult)) {
-                                            $fR_Title = $row["vchar_song_Name"];
+                                        while ($row = mysql_fetch_array($res_song_results)) {
+                                            $res_song_Title = $row["vchar_song_Name"];
                                             echo "<option>
-                                                                                          $fR_Title
+                                                                                          $res_song_Title
                                                                                           </option>";
                                         }
                                         ?>
@@ -118,7 +121,7 @@
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="rep_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -131,17 +134,24 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
-						<select class="form-control">
-							<option value="temp" name="temp" id="temp">Gospel Acclamation</option>
-							<option value="temp" name="temp" id="temp">Gospel Acclamation</option>
-							<option value="temp" name="temp" id="temp">Gospel Acclamation</option>
+						<select class="form-control" name="gospel_Acclamation">
+							<?php
+								$gospel_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Gospel Acclamation'";
+								$gospel_song_results = mysql_query($gospel_song_query);
+							
+								while($row = mysql_fetch_array($gospel_song_results))
+								{
+									$gospel_song_Title = $row["vchar_song_Name"];
+									echo "<option> $gospel_song_Title </option>";
+								}
+							?>
 						</select>
 					</div>
 				<br>
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="gos_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -154,17 +164,24 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
-						<select class="form-control">
-							<option value="temp" name="temp" id="temp">Song for Preparation of Gifts</option>
-							<option value="temp" name="temp" id="temp">Song for Preparation of Gifts</option>
-							<option value="temp" name="temp" id="temp">Song for Preparation of Gifts</option>
+							<select class="form-control" name="preparation_of_gifts">
+							<?php
+								$gifts_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Preparation of Gifts'";
+								$gifts_song_results = mysql_query($gifts_song_query);
+							
+								while($row = mysql_fetch_array($gifts_song_results))
+								{
+									$gifts_song_Title = $row["vchar_song_Name"];
+									echo "<option> $gifts_song_Title </option>";
+								}
+							?>
 						</select>
 					</div>
 				<br>
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="gifts_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -177,20 +194,27 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
-						<select class="form-control">
-							<option value="temp" name="temp" id="temp">Mystery of Faith</option>
-							<option value="temp" name="temp" id="temp">Mystery of Faith</option>
-							<option value="temp" name="temp" id="temp">Mystery of Faith</option>
+						<select class="form-control" name="mystery_of_faith">
+							<?php
+								$mystery_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Mystery of Faith'";
+								$mystery_song_results = mysql_query($mystery_song_query);
+							
+								while($row = mysql_fetch_array($mystery_song_results))
+								{
+									$mystery_song_Title = $row["vchar_song_Name"];
+									echo "<option> $mystery_song_Title </option>";
+								}
+							?>
 						</select>
 					</div>
 				<br>
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="mystery_song" value="Preview">
 					</div>
-				<br>
-				<br>
+					<br>
+					<br>
 				</div> <!-- /col-12 /col-sm-6 -->					
 			</div> <!-- /row -->
 								
@@ -200,17 +224,24 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
-						<select class="form-control">
-							<option value="temp" name="temp" id="temp">Communion Song</option>
-							<option value="temp" name="temp" id="temp">Communion Song</option>
-							<option value="temp" name="temp" id="temp">Communion Song</option>
+						<select class="form-control" name="communion_song">
+							<?php
+								$communion_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Communion Song'";
+								$communion_song_results = mysql_query($communion_song_query);
+							
+								while($row = mysql_fetch_array($communion_song_results))
+								{
+									$communion_song_Title = $row["vchar_song_Name"];
+									echo "<option> $communion_song_Title </option>";
+								}
+							?>
 						</select>
 					</div>
 				<br>
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="comm_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -223,17 +254,24 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
-						<select class="form-control">
-							<option value="temp" name="temp" id="temp">Final Commendation</option>
-							<option value="temp" name="temp" id="temp">Final Commendation</option>
-							<option value="temp" name="temp" id="temp">Final Commendation</option>
+						<select class="form-control" name="final_commendation">
+							<?php
+								$final_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Final Commendation'";
+								$final_song_results = mysql_query($final_song_query);
+							
+								while($row = mysql_fetch_array($final_song_results))
+								{
+									$final_song_Title = $row["vchar_song_Name"];
+									echo "<option> $final_song_Title </option>";
+								}
+							?>
 						</select>
 					</div>
 				<br>
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="final_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -246,17 +284,24 @@
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
-						<select class="form-control">
-							<option value="temp" name="temp" id="temp">Reccesional Song</option>
-							<option value="temp" name="temp" id="temp">Reccesional Song</option>
-							<option value="temp" name="temp" id="temp">Reccesional Song</option>
+						<select class="form-control" name="reccesional_song">
+							<?php
+								$reccesional_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Reccesional Song'";
+								$reccesional_song_results = mysql_query($reccesional_song_query);
+							
+								while($row = mysql_fetch_array($reccesional_song_results))
+								{
+									$reccesional_song_Title = $row["vchar_song_Name"];
+									echo "<option> $reccesional_song_Title </option>";
+								}
+							?>
 						</select>
 					</div>
 				<br>
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<button type="button" class="btn btn-lg btn-block btn-green">Preview</button>
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="recces_song" value="Preview">
 					</div>
 				<br>
 				<br>
