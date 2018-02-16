@@ -65,37 +65,29 @@
 			</div>
 			<!-- /row -->
 			<div class="MainForm">
-				<h2 class="text-center" style="color: white">
+				<h3 class="text-center" style="color: white; padding-top:6px;"> 
+
 					<?php
 					if ( $_POST[ 'open_song' ] ) 
 					{
 							$open_Song_Title = $_REQUEST['opening_song'];
 
-							echo $open_Song_Title ."</br></br>"; /*Checking the name of the selected song if its correct */
+							echo $open_Song_Title ."</br></br>"; /*Title*/
 						
-							//////////////////
-							//Testing 
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/".$open_Song_Title.".ogg";
-							echo "</br></br>";
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/".$open_Song_Title.".mp3 type=audio/mpeg";
-							echo "</br></br>"; 
-							////////////////
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
 						
 							echo "<audio controls loop>";
-							echo "<source src=/students/gomeluis/Funeral/Songs/Processional/".$open_Song_Title.".ogg type=audio/ogg>";
-							echo "<source src=/students/gomeluis/Funeral/Songs/Processional/".$open_Song_Title.".mp3 type=audio/mpeg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/".$open_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/".$open_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
 						
 							echo "</br></br>";
 
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/How Great Thou Art.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/How Great Thou Art.mp3' type='audio/mpeg'>";
-							echo "</audio>";
+							
 						
 
 					}
@@ -119,6 +111,7 @@
 							echo "<audio controls loop>";
 							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
 							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
+							echo "<source src=/students/gomeluis/Funeral/Songs/Processional/For All The Saints.mp3 type=audio/mpeg>";
 							echo "</audio>";
 					}
 					 elseif ( $_POST[ 'gos_song' ] ) 
@@ -255,10 +248,8 @@
 						}
 					
 					?>
-				</h2>
+				</h3>
 				<br/>
-				
-				<h2 style="color: red">*Disclaimer: The Songs being previewed aren't the versions that will be heard during the mass. These preivews are only for getting the general idea on how the song will sound.*</h2>
 				</br>
 				</br>
 				<div class="container w-50">
@@ -267,11 +258,14 @@
 							<input type="submit" class="btn btn-lg btn-block btn-green hidden-print" value="Go back">
 						</div>
 						<br/>
+                        
 					</div>
 				</div>
+                
 		</form>
 
 		</div>
+        <h3 style="color: red">*Disclaimer: The Songs being previewed aren't the versions that will be heard during the mass. These preivews are only for getting the general idea on how the song will sound.*</h3>
 	</div>
 	</form>
 	</div>
