@@ -34,10 +34,13 @@
         $username = "funeral";
         $password = "admin123";
         $dbname = 'dbfuneral';
-        $conn = mysql_connect($server, $username, $password) or die("Error connecting to server: " . mysql_error());
-        mysql_select_db($dbname, $conn);
-        mysql_set_charset('utf8');
-        mysql_select_db('dbfuneral');
+
+// Create connection
+$conn = new mysqli($server, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
         ?>
 
         <div class="container">
@@ -104,7 +107,7 @@
                         <div class="row"><!--Third Internal Row -->
 
                             <div class="col-lg-6 col-xs-12">
-                                <h5 class="push-left" > First Readings </h5>
+                                <h5 class="push-left" > First Readings: </h5>
 
                             </div>
                             <br/>
@@ -119,16 +122,15 @@
                             <div class="col-lg-6 col-xs-12"><!--Lift side of Fourth Internal Row -->
                                 <div class="input-group input-group-lg push-left">
                                     <select class="form-control" name="freading">
-                                        <?php
-                                        $fRquery = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'First Readings' ORDER BY vchar_title ASC";
-                                        $fRresult = mysql_query($fRquery);
-                                        while ($row = mysql_fetch_array($fRresult)) {
-                                            $fR_Title = $row["vchar_title"];
-                                            echo "<option>
-                                                  $fR_Title
-                                                 </option>";
-                                        }
-                                        ?>
+                                      <?php
+$sql = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'First Readings' ORDER BY vchar_title ASC";
+$result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=\"{$row['vchar_title']}\">";
+        echo $row['vchar_title'];
+        echo "</option>";
+    }
+?>
                                     </select>
                                 </div>
                                 <br/>
@@ -179,7 +181,7 @@
                         <div class="row"><!--Third Internal Row -->
 
                             <div class="col-lg-6 col-xs-12">
-                                <h5 class="push-left" > Second Readings </h5>
+                                <h5 class="push-left" > Second Readings: </h5>
 
                             </div>
                             <div class="col-lg-6 col-xs-12">
@@ -192,16 +194,15 @@
                             <div class="col-lg-6 col-xs-12"> <!--Lift side of Fourth Internal Row -->
                                 <div class="input-group input-group-lg push-left">
                                     <select class="form-control"  name="sreading">
-                                        <?php
-                                        $second_Readings_query = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'second Readings' ORDER BY vchar_title ASC";
-                                        $second_Readings_result = mysql_query($second_Readings_query);
-                                        while ($row = mysql_fetch_array($second_Readings_result)) {
-                                            $second_Readings_Title = $row["vchar_title"];
-                                            echo "<option>
-                                                                                          $second_Readings_Title
-                                                                                          </option>";
-                                        }
-                                        ?>
+                                      <?php
+$sql = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'second Readings' ORDER BY vchar_title ASC";
+$result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=\"{$row['vchar_title']}\">";
+        echo $row['vchar_title'];
+        echo "</option>";
+    }
+?>
                                     </select>
                                 </div>
                                 <br/>
@@ -250,16 +251,15 @@
                                     <div class="col-lg-6 col-xs-12"><!--Lift Side Second Internal Row-->
                                         <div class="input-group input-group-lg push-left">
                                             <select class="form-control" name="greading">
-                                                <?php
-                                                $gospelReading_query = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'Gospel Reading' ORDER BY vchar_title ASC";
-                                                $gospelReading_result = mysql_query($gospelReading_query);
-                                                while ($row = mysql_fetch_array($gospelReading_result)) {
-                                                    $gospelReading_Title = $row["vchar_title"];
-                                                    echo "<option>
-                                                                                          $gospelReading_Title
-                                                                                          </option>";
-                                                }
-                                                ?>
+                                                                                     <?php
+$sql = "SELECT distinct int_reading_ID, vchar_title FROM Reading_Prayer WHERE char_read_Category = 'Gospel Reading' ORDER BY vchar_title ASC";
+$result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=\"{$row['vchar_title']}\">";
+        echo $row['vchar_title'];
+        echo "</option>";
+    }
+?>
                                             </select>
                                         </div>
                                         <br/>
@@ -279,10 +279,20 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4 col-xs-12">
+                                    
+                                    <div class="col-lg-6 col-xs-12">
                                         <h5 class="push-left">Readings for:</h5>
                                     </div>
-                                    <div class="col-lg-8 col-xs-12">
+                                    <div class="col-lg-6 col-xs-12 input-group input-group-lg ">
+                                      <select class="form-control ">
+                                                <option value="temp" name="temp" id="temp">Brother</option>
+                                                <option value="temp" name="temp" id="temp">Sister</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <br/>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xs-12">
                                         <div class="input-group input-group-lg push-left">
                                             <select class="form-control">
                                                 <option value="temp" name="temp" id="temp">Brother</option>
@@ -290,36 +300,39 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                </div>
-                                <br/>
-                                <div class="row">
-                                    <div class="col-lg-12 col-xs-12">
-                                        <h5 class="push-left">Reader:</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 col-xs-12">
-                                        <h5 class="push-left">Name:</h5>
-                                    </div>
-                                    <div class="col-lg-5 col-xs-12">
-                                        <div class="input-group input-group-lg push-left">
-                                            <input type="text" class="form-control" placeholder="First Name" name="temp" id="temp">	
+                                        <div class="col-lg-6 col-xs-12"><!--Right Side Second Internal Row-->
+                                        <div class="push-left">
+                                            <input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
                                         </div>
                                         <br/>
                                     </div>
-                                    <div class="col-lg-5 col-xs-12">
+                                    
+                                    </div>
+                                     
+
+                                
+                                <br/>
+                                <div class="row">
+                                    <div class="col-lg-4 col-xs-12">
+                                        <h5 class="push-left">Reader Name:</h5>
+                                    </div>
+                                
+
+                                   
+                                    <div class="col-lg-8 col-xs-12">
                                         <div class="input-group input-group-lg push-left">
-                                            <input type="text" class="form-control" placeholder="Last Name" name="temp" id="temp">	
+                                            <input type="text" class="form-control" placeholder="Full Name" name="temp" id="temp">	
                                         </div>
+                                        <br/>
                                     </div>
                                 </div>
+            
                                 <br/>
                                 <div class="row">
                                     <div class="col-lg-12 col-xs-12">
                                         <span class="icon-green push-left">
                                             <i class="fas fa-plus-circle"></i>
-                                            Add another family member 
+                                            Add another Person 
                                         </span>
                                     </div>
                                     <br/>
@@ -354,7 +367,7 @@
                             </div>
                         </div>
                     </div> <!--End Third row lift part of the container-->
-
+                </div>
                     <br/><br/><br/><br/>
             </form>
         </div> <!--END container -->
