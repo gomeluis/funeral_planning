@@ -94,157 +94,136 @@
 					elseif ( $_POST[ 'rep_song' ] ) 
 					{
 							$rep_Song_Title = $_REQUEST['responsorial_song'];
+												
 						
-							echo $rep_Song_Title; /*Checking the name of the selected song if its correct */
+							echo $rep_Song_Title ."</br></br>"; /*Title*/
 						
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/" . $rep_Song_Title . ".ogg";
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
+						
 							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $rep_Song_Title . "'.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $rep_Song_Title . "'.mp3' type='audio/mpeg'>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Responsorial Psalm/".$rep_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Responsorial Psalm/".$rep_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
-							echo "</br>";
-
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
-							echo "<source src=/students/gomeluis/Funeral/Songs/Processional/For All The Saints.mp3 type=audio/mpeg>";
-							echo "</audio>";
+						
+							echo "</br></br>";
 					}
 					 elseif ( $_POST[ 'gos_song' ] ) 
 					 {
 							$gos_Song_Title = $_REQUEST[ 'gospel_Acclamation' ];
 						 
-							echo $gos_Song_Title; /*Checking the name of the selected song if its correct */
-						 
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/" . $gos_Song_Title . ".ogg";
+							echo $gos_Song_Title ."</br></br>"; /*Title*/
+						
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
+						
 							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $gos_Song_Title . "'.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $gos_Song_Title . "'.mp3' type='audio/mpeg'>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Gospel Acclamation/".$gos_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Gospel Acclamation/".$gos_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
-							echo "</br>";
-
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
-							echo "</audio>";
+						
+							echo "</br></br>";
 						}
 					 elseif ( $_POST[ 'gifts_song' ] ) 
 					 {
 							$gifts_Song_Title = $_REQUEST[ 'preparation_of_gifts' ];
 						 
-							echo $gifts_Song_Title; /*Checking the name of the selected song if its correct */
-						 
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/" . $gifts_Song_Title . ".ogg";
+							echo $gifts_Song_Title ."</br></br>"; /*Title*/
+						
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
+						
 							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $gifts_Song_Title. "'.ogg' type='audio/ogg'>";
-								echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $gifts_Song_Title . "'.mp3' type='audio/mpeg'>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Song for Preparation of Gifts/".$gifts_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Song for Preparation of Gifts/".$gifts_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
-							echo "</br>";
-
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
-							echo "</audio>";
+						
+							echo "</br></br>";
 						}
 					elseif ( $_POST[ 'mystery_song' ] ) 
 					 {
 							$mystery_Song_Title = $_REQUEST[ 'mystery_of_faith' ];
 						 
-							echo $mystery_Song_Title; /*Checking the name of the selected song if its correct */
-						 
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/" . $mystery_Song_Title . ".ogg";
+							echo $mystery_Song_Title ."</br></br>"; /*Title*/
+						
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
+						
 							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $mystery_Song_Title. "'.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $mystery_Song_Title . "'.mp3' type='audio/mpeg'>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Mystery of Faith/".$mystery_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Mystery of Faith/".$mystery_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
-							echo "</br>";
-
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
-							echo "</audio>";
+						
+							echo "</br></br>";
 						}
 					elseif ( $_POST[ 'comm_song' ] ) 
 					 {
 							$comm_Song_Title = $_REQUEST[ 'communion_song' ];
 						 
-							echo $comm_Song_Title; /*Checking the name of the selected song if its correct */
-						 
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/" . $comm_Song_Title . ".ogg";
+							echo $comm_Song_Title ."</br></br>"; /*Title*/
+						
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
+						
 							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $comm_Song_Title . "'.ogg' type='audio/ogg'>";
-								echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $comm_Song_Title . "'.mp3' type='audio/mpeg'>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Communion Song/".$comm_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Communion Song/".$comm_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
-							echo "</br>";
-
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
-							echo "</audio>";
+						
+							echo "</br></br>";
 						}
 					elseif ( $_POST[ 'final_song' ] ) 
 					 {
 							$final_Song_Title = $_REQUEST[ 'final_commendation' ];
 						 
-							echo $final_Song_Title; /*Checking the name of the selected song if its correct */
-							 
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/" . $final_Song_Title . ".ogg";
+							echo $final_Song_Title ."</br></br>"; /*Title*/
+						
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
+						
 							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $final_Song_Title . "'.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $final_Song_Title . "'.mp3' type='audio/mpeg'>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Final Commendation/".$final_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Final Commendation/".$final_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
-							echo "</br>";
-
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
-							echo "</audio>";
+						
+							echo "</br></br>";
 						}
 					elseif ( $_POST[ 'recces_song' ] ) 
 					 {
 							$recces_Song_Title = $_REQUEST[ 'reccesional_song' ];
 						 
-							echo $recces_Song_Title ; /*Checking the name of the selected song if its correct */
-						 
-							echo "source src=/students/gomeluis/Funeral/Songs/Processional/" . $recces_Song_Title  . ".ogg";
+							echo $recces_Song_Title ."</br></br>"; /*Title*/
+						
+							
 
-							/* Puts the varible in the url to find the song; however, it doesnt seem to find it */
+							/* Shows the preview of the song selected*/
+							
 							echo "</br>";
+						
 							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $recces_Song_Title  . "'.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/'" . $recces_Song_Title  . "'.mp3' type='audio/mpeg'>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Recessional Song/".$recces_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/students/gomeluis/Funeral/Songs/Recessional Song/".$recces_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
-							echo "</br>";
-
-							/*Testing audio sample*/
-							echo "<audio controls loop>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.ogg' type='audio/ogg'>";
-							echo "<source src='/students/gomeluis/Funeral/Songs/Processional/Be not afraid.mp3' type='audio/mpeg'>";
-							echo "</audio>";
+						
+							echo "</br></br>";
 						}
 					
 					?>
@@ -255,7 +234,7 @@
 				<div class="container w-50">
 					<div class="col-lg-12 col-xs-12">
 						<div>
-							<input type="submit" class="btn btn-lg btn-block btn-green hidden-print" value="Go back">
+							<input type="submit" class="btn btn-lg btn-block btn-green hidden-print" value="Previous">
 						</div>
 						<br/>
                         
@@ -265,7 +244,7 @@
 		</form>
 
 		</div>
-        <h3 style="color: red">*Disclaimer: The Songs being previewed aren't the versions that will be heard during the mass. These preivews are only for getting the general idea on how the song will sound.*</h3>
+        <p style="color: red; padding-top: 50px; text-align: center;" >Please Note: These soundtracks are for previewing purposes only.</p>
 	</div>
 	</form>
 	</div>
