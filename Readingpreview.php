@@ -33,17 +33,21 @@
         <!-- End custom style links -->
     </head>
     <body>
-        <?php
-        session_start();
-        $server = "funeralinstance.cfg8tyxsms9d.us-east-2.rds.amazonaws.com";
+      	<?php
+$server = "funeralinstance.cfg8tyxsms9d.us-east-2.rds.amazonaws.com";
         $username = "funeral";
         $password = "admin123";
         $dbname = 'dbfuneral';
-        $conn = mysql_connect($server, $username, $password) or die("Error connecting to server: " . mysql_error());
-        mysql_select_db($dbname, $conn);
-        mysql_set_charset('utf8');
-        mysql_select_db('dbfuneral');
-        ?> 
+
+// Create connection
+$conn = new mysqli($server, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+mysqli_set_charset($conn, "utf8");
+
+?>
 
         <div class="container container1S">
             <form action="MassPreferences.php" method="post">
@@ -62,19 +66,20 @@
         if ($_POST['frp']) {
             $requst = $_REQUEST['freading'];
             $fRquery = "Select  vchar_title,  longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
-            $fRresult = mysql_query($fRquery);
-            while ($row = mysql_fetch_array($fRresult)) {
+            $result = $conn->query($fRquery);
+            while ($row = $result->fetch_assoc()) {
                 $fR_Title = $row["vchar_title"];
                 $fR_text = $row["longtext_read_Text"];
                 echo "$fR_Title<br><br>";
 
                 echo "$fR_text\n";
             }
-        } elseif ($_POST['srp']) {
+        } 
+		elseif ($_POST['srp']) {
             $requst = $_REQUEST['sreading'];
             $sRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
-            $sRresult = mysql_query($sRquery);
-            while ($row = mysql_fetch_array($sRresult)) {
+            $result = $conn->query($sRquery);
+            while ($row = $result->fetch_assoc()) {
                 $sR_Title = $row["vchar_title"];
 
                 $sR_text = $row["longtext_read_Text"];
@@ -82,22 +87,41 @@
 
                 echo "$sR_text\n";
             }
-        } elseif ($_POST['grp']) {
+        }
+		elseif ($_POST['grp']) {
             $requst = $_REQUEST['greading'];
             $gRquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$requst'";
-            $gRresult = mysql_query($gRquery);
-            while ($row = mysql_fetch_array($gRresult)) {
+            $result = $conn->query($gRquery);
+            while ($row = $result->fetch_assoc()) {
                 $gR_Title = $row["vchar_title"];
 
                 $gR_text = $row["longtext_read_Text"];
+                echo "$gR_Title<br><br>";
 
-
-                $g_full_text = "$gR_Title<br><br>" . "$gR_text\n";
-                $_SESSION["g_reading"] = $g_full_text;
-                echo $_SESSION["g_reading"];
+                echo "$gR_text\n";
             }
         }
-        ?></h2>
+		
+		elseif ($_POST['p_fathfull']) {
+            $P_requst = $_REQUEST['P_of_the_F'];
+				
+				  $P_Rquery = "Select vchar_title, longtext_read_Text FROM Reading_Prayer WHERE vchar_title='$P_requst'";
+            $result = $conn->query($P_Rquery);
+            while ($row = $result->fetch_assoc()) {
+                $P_R_Title = $row["vchar_title"];
+
+                $P_R_text = $row["longtext_read_Text"];
+                echo "For $P_R_Title<br><br>";
+
+                echo "$P_R_text\n";
+            }
+		
+           
+        }
+		
+		
+        ?>
+		</h2>
                 <br/>
                     <div class ="container w-50">
                     <div class="col-lg-12 col-xs-12">
