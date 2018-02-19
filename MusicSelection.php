@@ -16,7 +16,7 @@
 <!-- End FontAwesome JS links -->
 
 <!-- Custom style links -->
-<link rel="stylesheet" type="text/css" href="Styles/styles.css" />
+<link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
 <!-- End custom style links -->
 
 <title>Music Selection</title> <!-- Change later -->
@@ -28,10 +28,7 @@
         $username = "funeral";
         $password = "admin123";
         $dbname = 'dbfuneral';
-
-
 $conn = new mysqli($server, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
@@ -43,13 +40,13 @@ if ($conn->connect_error) {
 
 
 <div class="container"> <!-- container -->
-	<form action="form4.php" method="post">
+	<form action="PersonalReminiscences.php.php" method="post">
 	
 	
 		<div class="row"> <!-- row -->
 			<div class="col-12"> <!-- col-12 -->
 				<div class="w-100" id="divLogoHeader">
-					<img class="img-fluid" src="images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
+					<img class="img-fluid" src="/Images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
 				</div>
 			</div> <!-- /col-12 -->
 		</div> <!-- /row -->
@@ -57,7 +54,7 @@ if ($conn->connect_error) {
 		<div class="row"> <!-- row -->
 			<div class="col-12 hidden-xs-down"> <!-- col-12 -->
 				<div class="w-100 text-center" id="step_bubbles">
-					<img class="w-50 img-fluid" src="images/step-bubbles-4.png" alt="Step 4 of 6">
+					<img class="w-50 img-fluid" src="/Images/step-bubbles-4.png" alt="Step 4 of 6">
 				</div>
 			</div> <!-- /col-12 -->
 		</div> <!-- /row -->
@@ -93,6 +90,7 @@ if ($conn->connect_error) {
 					</div>
 				<br>
 				</div> <!--/col-12 /col-sm-6 -->
+
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
 						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="open_song" value="Preview">

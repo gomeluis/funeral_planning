@@ -16,7 +16,7 @@
 <!-- End FontAwesome JS links -->
 
 <!-- Custom style links -->
-<link rel="stylesheet" type="text/css" href="Styles/styles.css" />
+<link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
 <!-- End custom style links -->
 
 <title>Initial Information</title>
@@ -25,13 +25,13 @@
 
 
 <div class="container"> <!-- container -->
-	<form action="#" method="post">
+	<form action="MassPreferences.php" method="post">
 	
 	
 		<div class="row"> <!-- row -->
 			<div class="col-12"> <!-- col-12 -->
 				<div class="w-100" id="divLogoHeader">
-					<img class="img-fluid" src="images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
+					<img class="img-fluid" src="/Images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
 				</div>
 			</div> <!-- /col-12 -->
 		</div> <!-- /row -->
@@ -39,7 +39,7 @@
 		<div class="row"> <!-- row -->
 			<div class="col-12 hidden-xs-down"> <!-- col-12 -->
 				<div class="w-100 text-center" id="step_bubbles">
-					<img class="w-50 img-fluid" src="images/step-bubbles-1.png" alt="Step 1 of 6">
+					<img class="w-50 img-fluid" src="/Images/step-bubbles-1.png" alt="Step 1 of 6">
 				</div>
 			</div> <!-- /col-12 -->
 		</div> <!-- /row -->
@@ -50,24 +50,26 @@
 					<br>
 					<h2 class="text-center" id="deceasedHeader">Deceased Information</h2>
 					<br>
-					<h5 class="push-left">Deceased's Name and Gender</h5>
+					
 				</div> <!-- /col-12 -->
-				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
+				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 --><h5 class="push-left">Deceased's First Name</h5>
 					<div class="input-group input-group-lg push-left">
 						<input type="text" class="form-control" placeholder="First Name" name="temp" id="temp">	
 					</div>
 				<br>
 				</div> <!-- /col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
+                	<h5 class="push-right">Last Name</h5>
 					<div class="input-group input-group-lg push-right">
 						<input type="text" class="form-control" placeholder="Last Name" name="temp" id="temp">
 					</div>
 				<br>
 				</div> <!-- /col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6 col-md-4"> <!-- col-12 col-sm-6 col-md-4 -->
+                <h5 class="push-left">Gender</h5>
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control">
-                        <option value="" disabled selected>Gender</option>
+                        <option value="" disabled selected>Select</option>
 							<option value="temp" name="temp" id="temp">Male</option>
 							<option value="temp" name="temp" id="temp">Female</option>
 						</select>
@@ -76,7 +78,7 @@
 				<br>
 				</div><!-- /col-12 /col-sm-6 /col-md-4 -->
 				<div class="col-12"> <!-- col-12 -->
-					<h5 class="push-left">Deceased's Previous Address</h5>
+					<h5 class="push-left">Deceased's Address</h5>
 				</div> <!-- /col-12 -->
 				<div class="col-12"> <!-- col-12 -->
 					<div class="input-group input-group-lg push-right push-left">
@@ -175,32 +177,38 @@
 					<br>
 				</div> <!-- /col-12 -->
 				<div class="col-12">
-					<h5 class="push-left">Contact's Name and Relation</h5>
+					
 				</div> <!-- /col-12 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
+                <h5 class="push-left">Contact's First Name</h5>
 					<div class="input-group input-group-lg push-left">
 						<input type="text" class="form-control" placeholder="First Name" name="temp" id="temp">	
 					</div>
 				<br>
 				</div> <!-- /col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
+                <h5 class="push-right">Last Name</h5>
 					<div class="input-group input-group-lg push-right">
 						<input type="text" class="form-control" placeholder="Last Name" name="temp" id="temp">
 					</div>
 				<br>
 				</div> <!-- /col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6 col-md-4"> <!-- col-12 col-sm-6 col-md-4 -->
+                                    <h5 class="push-left">Relation</h5>
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control">
-                        <option value="" disabled selected>Significant Other</option>
+                        <option value="" disabled selected>Select</option>
 							<option value="temp" name="temp" id="temp">Son</option>
 							<option value="temp" name="temp" id="temp">Daughter</option>
 							<option value="temp" name="temp" id="temp">Grandchild</option>
+                            <option value="temp" name="temp" id="temp">Friend</option>
 							<option value="temp" name="temp" id="temp">Mother</option>
 							<option value="temp" name="temp" id="temp">Father</option>
 							<option value="temp" name="temp" id="temp">Grandparent</option>
 							<option value="temp" name="temp" id="temp">Sibling</option>
-							<option value="temp" name="temp" id="temp">Other</option>
+							<option value="temp" name="temp" id="temp">Cousin</option>
+                            <option value="temp" name="temp" id="temp">Uncle</option>
+                            <option value="temp" name="temp" id="temp">Aunt</option>
 						</select>
 					</div>
 					<br>
@@ -333,12 +341,18 @@
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control">
-						<option value="" disabled selected>Significant Other</option>
+                        <option value="" disabled selected>Select</option>
 							<option value="temp" name="temp" id="temp">Son</option>
 							<option value="temp" name="temp" id="temp">Daughter</option>
+							<option value="temp" name="temp" id="temp">Grandchild</option>
+                            <option value="temp" name="temp" id="temp">Friend</option>
 							<option value="temp" name="temp" id="temp">Mother</option>
 							<option value="temp" name="temp" id="temp">Father</option>
+							<option value="temp" name="temp" id="temp">Grandparent</option>
 							<option value="temp" name="temp" id="temp">Sibling</option>
+							<option value="temp" name="temp" id="temp">Cousin</option>
+                            <option value="temp" name="temp" id="temp">Uncle</option>
+                            <option value="temp" name="temp" id="temp">Aunt</option>
 						</select>
 					</div>
 					<br>
@@ -381,7 +395,7 @@
  				</div> <!-- /col-6 /col-md-3 -->
  				<div class="col-12 col-md-6"> <!-- col-12 col-md-6 -->
  					<div class="push-right push-left">
- 						<input type="button" class="btn btn-lg btn-block btn-green" onclick="window.location.href='http://cpscserv.dom.edu/students/amadjuan/funeraldemo/MassPreferences.php'" value="Next">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Next">
 					</div>
 					<br>
  				</div> <!-- /col-12 /col-md-6 -->

@@ -26,10 +26,9 @@
         <style>
             .container1S {background-color:White}
             .herdre1{padding:0px;}
-
         </style>
         <!-- Custom style links -->
-        <link rel="stylesheet" type="text/css" href="Styles/styles.css" />
+        <link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
         <!-- End custom style links -->
     </head>
     <body>
@@ -38,7 +37,6 @@ $server = "funeralinstance.cfg8tyxsms9d.us-east-2.rds.amazonaws.com";
         $username = "funeral";
         $password = "admin123";
         $dbname = 'dbfuneral';
-
 // Create connection
 $conn = new mysqli($server, $username, $password, $dbname);
 // Check connection
@@ -46,7 +44,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 mysqli_set_charset($conn, "utf8");
-
 ?>
 
         <div class="container container1S">
@@ -55,7 +52,7 @@ mysqli_set_charset($conn, "utf8");
                 <div class="row"> <!-- row -->
                     <div class="col-12 herdre1"> <!-- col-12 -->
                         <div class="w-10 herdre1" id="divLogoHeader">
-                            <img class="img-fluid" src="images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
+                            <img class="img-fluid" src="/Images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
                         </div>
                         <br/>
                     </div> <!-- /col-12 -->
@@ -71,7 +68,6 @@ mysqli_set_charset($conn, "utf8");
                 $fR_Title = $row["vchar_title"];
                 $fR_text = $row["longtext_read_Text"];
                 echo "$fR_Title<br><br>";
-
                 echo "$fR_text\n";
             }
         } 
@@ -81,10 +77,8 @@ mysqli_set_charset($conn, "utf8");
             $result = $conn->query($sRquery);
             while ($row = $result->fetch_assoc()) {
                 $sR_Title = $row["vchar_title"];
-
                 $sR_text = $row["longtext_read_Text"];
                 echo "$sR_Title<br><br>";
-
                 echo "$sR_text\n";
             }
         }
@@ -94,10 +88,8 @@ mysqli_set_charset($conn, "utf8");
             $result = $conn->query($gRquery);
             while ($row = $result->fetch_assoc()) {
                 $gR_Title = $row["vchar_title"];
-
                 $gR_text = $row["longtext_read_Text"];
                 echo "$gR_Title<br><br>";
-
                 echo "$gR_text\n";
             }
         }
@@ -109,10 +101,8 @@ mysqli_set_charset($conn, "utf8");
             $result = $conn->query($P_Rquery);
             while ($row = $result->fetch_assoc()) {
                 $P_R_Title = $row["vchar_title"];
-
                 $P_R_text = $row["longtext_read_Text"];
                 echo "For $P_R_Title<br><br>";
-
                 echo "$P_R_text\n";
             }
 		
