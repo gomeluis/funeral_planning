@@ -1,6 +1,8 @@
 /* CSS Document */
 body{
 	background-color: #051c38;
+	
+	
 }
 #divLogoHeader{
 	background-color: #051c38;
@@ -86,4 +88,76 @@ body{
 	.loginWrapper{
 		border-radius: 0px;
 	}
+}
+
+
+.__   __.      ___   ____    ____ .______        ___      .______      
+|  \ |  |     /   \  \   \  /   / |   _  \      /   \     |   _  \     
+|   \|  |    /  ^  \  \   \/   /  |  |_)  |    /  ^  \    |  |_)  |    
+|  . `  |   /  /_\  \  \      /   |   _  <    /  /_\  \   |      /     
+|  |\   |  /  _____  \  \    /    |  |_)  |  /  _____  \  |  |\  \----.
+|__| \__| /__/     \__\  \__/     |______/  /__/     \__\ | _| `._____|
+                                                                       
+
+.container
+{
+	width: 80%;
+	margin: 0 auto;
+}
+
+header
+{
+	background: #051c38;
+	border-bottom-style: green;
+	box-shadow: 5px 4px 7px green;
+	
+}
+header::after{
+	content: '';
+	display: table;
+	clear: both;
+	padding-bottom: 5px;
+}
+
+
+nav
+{
+	float: right ;
+}
+
+nav ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav li{
+	display: inline-block;
+	margin-left: 50px;
+	padding-top: 22px;
+	
+	position: relative;
+}
+nav a{
+	color:green;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+nav a:hover{
+	color:white;
+}
+
+nav a::before{
+	content: '';
+	display: block;
+	height: 5px;
+	width:0%;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	transition: all ease-in-out 250ms ;
+}
+nav a:hover::before{
+	width: 100%;
 }
