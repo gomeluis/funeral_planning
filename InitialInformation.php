@@ -18,6 +18,10 @@
 <!-- Custom style links -->
 <link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
 <!-- End custom style links -->
+<!-- Google Font links -->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- End Google Font links -->
+
 
 <title>Initial Information</title>
 </head>
@@ -209,6 +213,7 @@
 							<option value="temp" name="temp" id="temp">Cousin</option>
                             <option value="temp" name="temp" id="temp">Uncle</option>
                             <option value="temp" name="temp" id="temp">Aunt</option>
+                            <option value="temp" name="temp" id="temp">Other</option>
 						</select>
 					</div>
 					<br>
@@ -296,18 +301,17 @@
 				<br>
 				<br>
 				</div> <!-- /col-12 /col-ms-4 -->
-				<div class="col-12"> <!-- col-12 -->
-					<h5 class="push-left">Contact's Email and Phone Number</h5>
-				</div> <!-- /col-12 -->
-				<div class="col-12 col-md-6"> <!-- col-12 col-md-6 -->
+
+				<div class="col-12 col-md-6"> <!-- col-12 col-md-6 --><h5 class="push-left">Contact's Email</h5>
 					<div class="input-group input-group-lg push-left push-right">
 						<input type="email" class="form-control" id="temp" name="temp" placeholder="Email">
 					</div>
 					<br>
-				</div> <!-- /col-12 /col-md-6 -->	
-				<div class="col-12 col-md-6"> <!-- col-12 col-md-6 -->
+				</div> <!-- /col-12 /col-md-6 -->
+                <div class="col-12 col-md-6"> <!-- col-12 col-md-6 -->
+                <h5 class="push-right">Phone Number</h5>     
 					<div class="input-group input-group-lg push-left push-right">
-						<input type="text" class="form-control" name="temp" id="temp" placeholder="Phone">
+						<input type="text" class="form-control" name="temp" id="temp" placeholder="Phone Number">
 					</div>
 					<br>
 					<br>
@@ -401,7 +405,13 @@
  				</div> <!-- /col-12 /col-md-6 -->
  			</div> <!-- /row -->
 		</div>
-		
+		<div id="footer">
+			<?php
+			include "functions.php";
+			getFooter();
+			?>
+		</div>
+
 		
 	</form>
 </div> <!-- /container -->

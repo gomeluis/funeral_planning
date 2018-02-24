@@ -22,14 +22,15 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <!-- End Google Font links -->
 
-
-<title>Gift Bearers</title>
+<title>Personal Reminiscenses</title>
 </head>
 <body>
 
 
 <div class="container"> <!-- container -->
-	<form action="MusicSelection.php" method="post">	
+	<form action="#" method="post">
+	
+	
 		<div class="row"> <!-- row -->
 			<div class="col-12"> <!-- col-12 -->
 				<div class="w-100" id="divLogoHeader">
@@ -41,69 +42,60 @@
 		<div class="row"> <!-- row -->
 			<div class="col-12 hidden-xs-down"> <!-- col-12 -->
 				<div class="w-100 text-center" id="step_bubbles">
-					<img class="w-50 img-fluid" src="/Images/step-bubbles-3.png" alt="Step 3 of 6">
+					<img class="w-50 img-fluid" src="/Images/step-bubbles-5.png" alt="Step 5 of 6">
 				</div>
 			</div> <!-- /col-12 -->
 		</div> <!-- /row -->
 
 		<div id="MainForm">
 			<div class="row"> <!-- row -->
-            	<div class="col-12"> <!-- col-12 -->
-                	<br>
-                	<h2 class="text-center" id="deceasedHeader">Gift Bearers</h2>
-                    <br>
-                    <h5 class="push-left">If You Have Any Gift Bearers, You Can Enter Their Name(s) Below</h5>
-                    <br>
-                </div> <!-- /col-12 -->
-                <div class="col-12"> <!-- col-12 -->
-					<h5 class="push-left">Person 1</h2>
+				<div class="col-12"> <!-- col-12 -->
+					<br>
+					<h2 class="text-center" id="deceasedHeader">Personal Reminiscenses</h2>
+					<br>
+					<br>
+				</div> <!-- /col-12 -->					
+			</div> <!-- /row -->
+			
+			<div class="row"> <!-- row -->
+				<div class="col-12"> <!-- col-12 -->
+					<h5 class="push-left">How Did Your Loved One Practice His or Her Faith?</h5>
 				</div> <!-- /col-12 -->
-               <div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
-					<div class="input-group input-group-lg push-left">
-						<input type="text" class="form-control" placeholder="First Name" name="temp" id="temp">	
-					</div>
-				<br>
-				</div> <!-- /col-12 /col-sm-6 -->
-				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
-					<div class="input-group input-group-lg push-right">
-						<input type="text" class="form-control" placeholder="Last Name" name="temp" id="temp">
-					</div>
-				<br>
-				</div> <!-- /col-12 /col-sm-6 -->
-            </div> <!-- /row -->
-            
-            <div class="row"> <!-- row -->
-               <div class="col-12"> <!-- col-12 -->
-					<h5 class="push-left">Person 2</h2>
-				</div> <!-- /col-12 -->  
-                <div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
-					<div class="input-group input-group-lg push-left">
-						<input type="text" class="form-control" placeholder="First Name" name="temp" id="temp">	
-					</div>
-				<br>
-				</div> <!-- /col-12 /col-sm-6 -->
-				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
-					<div class="input-group input-group-lg push-right">
-						<input type="text" class="form-control" placeholder="Last Name" name="temp" id="temp">
-					</div>
-				<br>
-				</div> <!-- /col-12 /col-sm-6 -->
-            </div> <!-- /row -->
-            
-            <div class="row"> <!-- row -->
-            	<div class="col-12"> <!-- col-12 -->
-                	<div class="push-left">
-                        <span class="icon-green">
-                            <i class="fas fa-plus-circle"></i>
-                            Add another person
-                        </span>
-                	</div>
-				<br>
-				<br>
-				<br>
+				<div class="col-12"> <!-- col-12 -->
+					<div class="form-group push-left push-right">
+    					<textarea class="form-control" id="temp" rows="3"></textarea>
+  					</div>
+  				<br>
+  				<br>
 				</div> <!-- /col-12 -->
-            </div> <!-- /row -->					
-                    
+			</div> <!-- /row -->	
+			
+			<div class="row"> <!-- row -->
+				<div class="col-12"> <!-- col-12 -->
+					<h5 class="push-left">How Does The Gospel Reading You Chose Relate To The Deceased?</h5>
+				</div> <!-- /col-12 -->
+				<div class="col-12"> <!-- col-12 -->
+					<div class="form-group push-left push-right">
+    					<textarea class="form-control" id="temp" rows="3"></textarea>
+  					</div>
+  				<br>
+  				<br>
+				</div> <!-- /col-12 -->
+			</div> <!-- /row -->	
+			
+			<div class="row"> <!-- row -->
+				<div class="col-12"> <!-- col-12 -->
+					<h5 class="push-left">What Memories or Other Personal Information Would You Like to Share About Your Loved One?</h5>
+				</div> <!-- /col-12 -->
+				<div class="col-12"> <!-- col-12 -->
+					<div class="form-group push-left push-right">
+    					<textarea class="form-control" id="temp" rows="3"></textarea>
+  					</div>
+  				<br>
+  				<br>
+				</div> <!-- /col-12 -->
+			</div> <!-- /row -->	
+			
 			<div class="row"> <!-- row -->
  				<div class="col-6"> <!-- col-6 -->
  					<div class="push-left">
@@ -122,19 +114,18 @@
              <div class="row"> <!-- row -->
  				<div class="col-12 push-md-6 col-md-6"> <!-- col-12 col-md-6 -->
  					<div class="push-left push-right" id="btnNext">
- 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Next">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Finish">
 					</div>
 					<br>
  				</div> <!-- /col-12 /col-md-6 -->
                 <div class="col-12 pull-md-6 col-md-6"> <!-- col-12 col-md-6 -->
  					<div class="push-right push-left" id="btnPrev">
- 						<input type="submit" class="btn btn-lg btn-block btn-green" formaction="MassPreferences.php" value="Previous">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green" formaction="MusicSelection.php" value="Previous">
 					</div>
 					<br>
  				</div> <!-- /col-12 /col-md-6 -->
  			</div> <!-- /row -->
-            
-                                        
+		
 		</div> <!-- /MainForm -->
 		<div id="footer">
 			<?php
@@ -142,8 +133,13 @@
 			getFooter();
 			?>
 		</div>
-
 	</form>
 </div> <!-- /container -->
 </body>
-</html>
+</html>	
+
+
+
+
+
+

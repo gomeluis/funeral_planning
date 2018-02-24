@@ -18,6 +18,10 @@
 <!-- Custom style links -->
 <link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
 <!-- End custom style links -->
+<!-- Google Font links -->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- End Google Font links -->
+
 
 <title>Music Selection</title> <!-- Change later -->
 </head>
@@ -33,14 +37,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 	mysqli_set_charset($conn,"utf8");
-        
-	
+
         ?>
 
 
 
 <div class="container"> <!-- container -->
-	<form action="PersonalReminiscences.php.php" method="post">
+	<form action="PersonalReminiscences.php" method="post">
 	
 	
 		<div class="row"> <!-- row -->
@@ -93,7 +96,7 @@ if ($conn->connect_error) {
 
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="open_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="open_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -125,7 +128,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="rep_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="rep_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -155,7 +158,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="gos_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="gos_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -185,7 +188,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="gifts_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="gifts_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -215,7 +218,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="mystery_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="mystery_song" value="Preview">
 					</div>
 					<br>
 					<br>
@@ -245,7 +248,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="comm_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="comm_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -275,7 +278,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="final_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="final_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -305,7 +308,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="player.php" name="recces_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="recces_song" value="Preview">
 					</div>
 				<br>
 				<br>
@@ -336,13 +339,20 @@ if ($conn->connect_error) {
  				</div> <!-- /col-12 /col-md-6 -->
                 <div class="col-12 pull-md-6 col-md-6"> <!-- col-12 col-md-6 -->
  					<div class="push-right push-left" id="btnPrev">
- 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Previous">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green" formaction="GiftBearers.php" value="Previous">
 					</div>
 					<br>
  				</div> <!-- /col-12 /col-md-6 -->
  			</div> <!-- /row -->
 									
 		</div> <!-- /MainForm -->
+		
+		<div id="footer">
+			<?php
+				include "functions.php";
+				getFooter();
+			?>
+		</div>
 	</form>
 </div> <!-- /container -->
 </body>
