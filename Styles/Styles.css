@@ -161,3 +161,53 @@ nav a::before{
 nav a:hover::before{
 	width: 100%;
 }
+
+/*
+_______   ______     ______   .___________. _______ .______      
+|   ____| /  __  \   /  __  \  |           ||   ____||   _  \     
+|  |__   |  |  |  | |  |  |  | `---|  |----`|  |__   |  |_)  |    
+|   __|  |  |  |  | |  |  |  |     |  |     |   __|  |      /     
+|  |     |  `--'  | |  `--'  |     |  |     |  |____ |  |\  \----.
+|__|      \______/   \______/      |__|     |_______|| _| `._____|
+                                                                  
+*/
+
+.footerHeader{
+	font-size: 1em !important;	
+	letter-spacing: 3px;
+}
+.footer-push-left{
+	padding-left: 40px;	
+}
+.footer-push-right{
+	padding-right: 40px;	
+}
+.icon-push{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+@media screen and (max-width: 576px){
+	.fullFooter{
+		background-color: #006A00;	
+		color: #FFFFFF;
+		font-size: 0.7em;
+		line-height: 130%;
+		font-family: 'Roboto';
+		letter-spacing: 2.5px;
+	}
+	.text-xs-center{
+		text-align: center;	
+	}
+}
+@media screen and (min-width: 577px){
+	#footer{
+		background-color: #006A00;	
+		color: #FFFFFF;
+		font-size: 0.7em;
+		line-height: 130%;
+		left:0;
+		right:0;
+		font-family: 'Roboto';
+		letter-spacing: 2.5px;
+	}
+}
