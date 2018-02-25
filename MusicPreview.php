@@ -202,11 +202,11 @@ if ($conn->connect_error) {
 						
 							echo "</br></br>";
 						}
-					elseif ( $_POST[ 'recces_song' ] ) 
+					elseif ( $_POST[ 'recess_song' ] ) 
 					 {
-							$recces_Song_Title = $_REQUEST[ 'reccesional_song' ];
+							$recess_Song_Title = $_REQUEST[ 'recessional_song' ];
 						 
-							echo $recces_Song_Title ."</br></br>"; /*Title*/
+							echo $recess_Song_Title ."</br></br>"; /*Title*/
 						
 							
 							/* Shows the preview of the song selected*/

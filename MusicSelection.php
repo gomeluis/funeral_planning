@@ -82,10 +82,8 @@ if ($conn->connect_error) {
 										
                                         while ($row = $open_song_results->fetch_assoc()) {
                                             $open_song_Title = $row["vchar_song_Name"];
-                                            echo "<option>
-                                                                                          $open_song_Title
-                                                                                          </option>";
-                                        }
+                                            echo "<option>$open_song_Title</option>";
+}
                                         ?>
                                     </select>
                         
@@ -117,9 +115,7 @@ if ($conn->connect_error) {
 										
                                         while ($row = $res_song_results->fetch_assoc()) {
                                             $res_song_Title = $row["vchar_song_Name"];
-                                            echo "<option>
-                                                                                          $res_song_Title
-                                                                                          </option>";
+                                            echo "<option>$res_song_Title</option>";
                                         }
                                         ?>
                                     </select>
@@ -291,15 +287,15 @@ if ($conn->connect_error) {
 				</div> <!-- /col-12 -->	
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
-						<select class="form-control" name="reccesional_song">
+						<select class="form-control" name="recessional_song">
 							<?php
-								$reccesional_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Hymn Suggestions'";
-								$reccesional_song_results = $conn->query($reccesional_song_query);
+								$recessional_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Recessional'";
+								$recessional_song_results = $conn->query($recessional_song_query);
 							
-								while($row = $reccesional_song_results->fetch_assoc())
+								while($row = $recessional_song_results->fetch_assoc())
 								{
-									$reccesional_song_Title = $row["vchar_song_Name"];
-									echo "<option> $reccesional_song_Title </option>";
+									$recessional_song_Title = $row["vchar_song_Name"];
+									echo "<option> $recessional_song_Title </option>";
 								}
 							?>
 						</select>
@@ -308,7 +304,7 @@ if ($conn->connect_error) {
 				</div> <!--/col-12 /col-sm-6 -->
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="push-right">
-						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="recces_song" value="Preview">
+						<input type="submit" class="btn btn-lg btn-block btn-green"formaction="MusicPreview.php" name="recess_song" value="Preview">
 					</div>
 				<br>
 				<br>
