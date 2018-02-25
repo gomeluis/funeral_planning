@@ -214,8 +214,8 @@ if ($conn->connect_error) {
 							echo "</br>";
 						
 							echo "<audio controls loop>";
-							echo "<source src='/Family/Songs/Recessional Song/".$recces_Song_Title.".ogg' type=audio/ogg>";
-							echo "<source src='/Family/Songs/Recessional Song/".$recces_Song_Title.".mp3' type=audio/mpeg>";
+							echo "<source src='/Family/Songs/Recessional Song/".$recess_Song_Title.".ogg' type=audio/ogg>";
+							echo "<source src='/Family/Songs/Recessional Song/".$recess_Song_Title.".mp3' type=audio/mpeg>";
 							echo "</audio>";
 						
 							echo "</br></br>";
