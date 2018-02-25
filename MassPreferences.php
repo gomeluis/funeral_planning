@@ -437,7 +437,7 @@ $result = $conn->query($sql);
             
         </div> <!--END container -->
     </body>
-   					 <div id="footer" style="width: 62%; margin-left: 20%;">
+   					 <div id="footer" style="width: 60%; margin-left: 20%;">
 						<?php
 						include "functions.php";
 						getFooter();
