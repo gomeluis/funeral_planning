@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<!--Designer: Carlos Cornejo
+	
+		Author: Luis Gomez & Ali Alhammali ~ MusicSelection.php
+			-Ali created the intital querys
+			-Luis Fixed all the varibles to match the naming conventions of the database
+				Got the preview button to pass the user selected song to the preview page.
+				
+		Code Review: Luis Gomez & Juan Amador
+		
+		Description: Allows the user to selected from 8 categories and preview any song they wish to preview that is provided from the 
+		dropdown list.
+		
+!-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -76,6 +89,11 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
  						<select class="form-control" name="opening_song">
+                                     <!--Author: Ali Alhammali and Luis Gomez
+										Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+										
+									!-->
                                       <?php
                                         $open_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Processional'";
                                         $open_song_results = $conn->query($open_song_query);
@@ -109,6 +127,10 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
  						<select class="form-control" name="responsorial_song">
+                                        <!--Author: Ali Alhammali and Luis Gomez
+											Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+										!-->
                                          <?php
                                         $res_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Responsorial Psalm'";
                                         $res_song_results = $conn->query($res_song_query);
@@ -138,6 +160,10 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control" name="gospel_Acclamation">
+						<!--Author: Ali Alhammali and Luis Gomez
+							Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+						!-->
 							<?php
 								$gospel_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Gospel Acclamation'";
 								$gospel_song_results = $conn->query($gospel_song_query);
@@ -168,6 +194,10 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
 							<select class="form-control" name="preparation_of_gifts">
+							<!--Author: Ali Alhammali and Luis Gomez
+							Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+							!-->
 							<?php
 								$gifts_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Preparation of Gifts'";
 								$gifts_song_results = $conn->query($gifts_song_query);
@@ -198,6 +228,10 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control" name="mystery_of_faith">
+						<!--Author: Ali Alhammali and Luis Gomez
+							Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+						!-->
 							<?php
 								$mystery_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Mystery of Faith'";
 								$mystery_song_results = $conn->query($mystery_song_query);
@@ -228,6 +262,10 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control" name="communion_song">
+						<!--Author: Ali Alhammali and Luis Gomez
+							Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+						!-->
 							<?php
 								$communion_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Communion Song'";
 								$communion_song_results = $conn->query($communion_song_query);
@@ -258,6 +296,10 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control" name="final_commendation">
+						<!--Author: Ali Alhammali and Luis Gomez
+							Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+						!-->
 							<?php
 								$final_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Final Commendation'";
 								$final_song_results = $conn->query($final_song_query);
@@ -288,6 +330,12 @@ if ($conn->connect_error) {
 				<div class="col-12 col-sm-6"> <!-- col-12 col-sm-6 -->
 					<div class="input-group input-group-lg push-left">
 						<select class="form-control" name="recessional_song">
+						<!--Author: Ali Alhammali and Luis Gomez
+							Description: Ali made in intial query. Luis corrected to query to match the naming conventions of database and the varibles also got 
+										preview button working corretly by passing the correct selected song.
+						!-->
+				
+				
 							<?php
 								$recessional_song_query = "SELECT distinct vchar_song_Name FROM Song WHERE char_song_Category = 'Recessional'";
 								$recessional_song_results = $conn->query($recessional_song_query);
@@ -343,6 +391,9 @@ if ($conn->connect_error) {
 									
 		</div> <!-- /MainForm -->
 		
+		<!-- Author: Carlos Cornejo - functions.php
+			Description: The footer that links to Saint Juliana's website with appropriate links
+		!-->
 		<div id="footer">
 			<?php
 				include "functions.php";

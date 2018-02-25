@@ -2,6 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+	<!--Designer: Carlos Cornejo
+	
+		Author: Luis Gomez ~ MusicPreview.php
+			-This entire page was coded by Luis Gomez.
+			-All the songs previews were downloaded and edited by Luis Gomez.
+			
+		Code Review: Luis Gomez & Juan Amador
+		
+		Description: Allows the user to preview a certain song depending on the selection that have made.
+		
+	!-->
+		
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
