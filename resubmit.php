@@ -1,17 +1,9 @@
 <!DOCTYPE html>
-
 <!--
-	
-		Author: Ali Alhammali ~ GiftBearers.php
-			-
-			- 
-				submet the record and send email to primary contact
-				
-		Code Review: Luis Gomez & Juan Amador
-		
-		
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
 -->
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -120,13 +112,11 @@ if ($conn->connect_error) {
             $Priest_l_name = $_REQUEST['Priest_l_name'];
             $BM_f_name = $_REQUEST['BM_f_name'];
             $BM_l_name = $_REQUEST['BM_l_name'];
-			$Primary_Contact_pass= uniqid();
-			
 
             $insert_Primary_Contact_sql = "INSERT INTO Primary_Contact (int_primary_Contact_ID,int_access_Level_ID, 
                  vchar_primCont_First_Name, vchar_primCont_Last_Name,nvarchar_primCont_Email,
-                 char_relation_To_Deceased, vchar_primCont_Phone_Num,vchar_primCont_password)
-                    VALUES ('$new_p_id','2', '$p_f_name', '$p_L_name','$p_Email','$p_Relation', '$p_phone','$Primary_Contact_pass')" or die(my_syql_error());
+                 char_relation_To_Deceased, vchar_primCont_Phone_Num)
+                    VALUES ('$new_p_id','2', '$p_f_name', '$p_L_name','$p_Email','$p_Relation', '$p_phone')" or die(my_syql_error());
             mysqli_query($conn,$insert_Primary_Contact_sql);
 				
             $insert_Deceased_sql = "INSERT INTO Deceased (int_deceased_ID, vchar_dec_First_Name, vchar_dec_Last_Name, char_gender, 
@@ -159,62 +149,14 @@ if ($conn->connect_error) {
                     . "VALUES ('$new_F_id', '$new_d_id', '$Priest_f_name', '$Priest_l_name', '$BM_f_name', '$BM_l_name')";
 
             mysqli_query($conn, $creat_mass_plan_id);
-			
-			
-			 $seach_Family_ID = "SELECT COUNT(*) FROM Family_Members";
-            $seachID_Family_Rresult = $conn->query($seach_Family_ID);
-            while ($row = $seachID_Family_Rresult->fetch_assoc()) {
-                $last_Family_id = $row["COUNT(*)"];
-
-                $new_Family_id = $last_Family_id + 1;
-            }
-			
-			$creat_family_member_ID = "INSERT INTO Family_Members(int_family_Member_ID, int_deceased_ID) VALUES ('$new_Family_id','$new_d_id')";
-			mysqli_query($conn, $creat_family_member_ID);
+            //$insert_Primary_Contactn_id ="INSERT INTO Deceased(int_primary_Contact_ID) VALUES ('$new_p_id')";
+            //mysql_query($insert_Primary_Contactn_id);
 			
 			
 
-            header("location:http://cpscserv.dom.edu/students/alhamali/PHP/MassPreferences/resubmit.php");
-			
-			////////////////////////
-require 'PHPMailerAutoload.php';
 
-$mail = new PHPMailer;
+            header("location:http://www.funerelplanning.com/resubmit.php");
 
-$mail->SMTPDebug = 1;                               // Enable verbose debug output
-
-$mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.Gmail.com';                       // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'sjfuneralplanning@gmail.com';                 // SMTP username
-$mail->Password = '995511fa';                           // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                                    // TCP port to connect to
-
-$mail->setFrom('sjfuneralplanning@gmail.com', 'Funeral Planning System');
-$mail->addAddress($p_Email);     // Add a recipient
-$mail->addAddress('sjfuneralplanning@gmail.com');               // Name is optional
-$mail->addReplyTo('sjfuneralplanning@gmail.com', 'Information');
-// $mail->addCC('cc@example.com');
-// $mail->addBCC('bcc@example.com');
-
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-$mail->isHTML(true);                                  // Set email format to HTML
-
-$mail->Subject = 'Funeral Planning System';
-$mail->Body    = 'Thank you, '.' <p> ' .$p_f_name.'</p>'.'<br> for filling the funeral mass planning information. We Know this is a difficult time for you. If there is any other way we can be of further assistance to you and your family, please do not hesitate to contact us'.'<br> http://cpscserv.dom.edu/students/alhamali/PHP/MassPreferences/signin.php '.'<br> Username :'.$p_Email.'<br> password :'.$Primary_Contact_pass ;
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Message has been sent';
-}
-			
-			
-			////////////////////////
             exit;
         }
         ?>
@@ -235,7 +177,7 @@ if(!$mail->send()) {
                 <div class="row text-center text-white">
                     <div class="col-12 text-center t"> 
 					
-                        <h1> The Record Has Been Added to database</h1>
+                        <h1> The Record Has Been Added to datebase</h1>
                         
 
                     </div>
