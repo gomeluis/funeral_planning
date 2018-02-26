@@ -2,6 +2,17 @@
 
 <html lang="en">
     <head>
+       <!--Designer: Carlos Cornejo
+	
+		Author: Ali A. - Readingpreview.php
+			-The entire page was coded by Ali A.
+		
+				
+		Code Review: Luis Gomez & Juan Amador
+		
+		Description: Previews the selected text
+		
+!-->
         <!-- <meta  content="tex/html"charset="UTF-8">-->
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title> Reading</title>

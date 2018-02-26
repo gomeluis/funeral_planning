@@ -1,6 +1,18 @@
 <!doctype html>
 <html>
     <head>
+       <!--Designer: Carlos Cornejo
+	
+		Author: Carlos V. and Ali 
+			-Carlos V. created the function for add another person
+			-Ali created all the querys to get all the readings appear in the dropdown list and the preview
+				
+				
+		Code Review: Luis Gomez & Juan Amador
+		
+		Description: Allow the user to select a reading and preview them
+		
+!-->
         <meta content="tex/html" charset="utf-8">
         <title>Mass Preferences</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -27,8 +39,11 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<!-- End Google Font links -->
 
-		
+		<!-- Author: Carlos V.
+			Desription: Function for add more people
+			-->
 		<script>
+			
 			function addNewPerson(){
 				//New "Name" Label
 				var labelArea = document.getElementById("nameLabel");
@@ -437,6 +452,9 @@ $result = $conn->query($sql);
             
         </div> <!--END container -->
     </body>
+  					 <!-- Author: Carlos Cornejo - functions.php
+			Description: The footer that links to Saint Juliana's website with appropriate links
+		!-->
    					 <div id="footer" style="width: 60%; margin-left: 20%;">
 						<?php
 						include "functions.php";

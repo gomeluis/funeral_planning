@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<!--Designer: Carlos Cornejo
+	
+		Author: Carlos C - GiftBearers.php
+		
+				
+		Code Review: Luis Gomez & Juan Amador
+		
+		Description: User input names for gift bearers.
+		
+!-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -136,6 +146,10 @@
             
                                         
 		</div> <!-- /MainForm -->
+		
+		<!-- Author: Carlos Cornejo - functions.php
+			Description: The footer that links to Saint Juliana's website with appropriate links
+		!-->
 		<div id="footer">
 			<?php
 			include "functions.php";

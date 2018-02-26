@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<!--Designer: Carlos Cornejo
+	
+		Author: Juan Amaador~ InitialInformation.php
+			-Juan the drownlist for all the states
+			-Luis Fixed all the varibles to match the naming conventions of the database
+				
+				
+		Code Review: Luis Gomez & Juan Amador
+		
+		Description: Initial information from the user is being filled.
+		
+!-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -405,6 +417,10 @@
  				</div> <!-- /col-12 /col-md-6 -->
  			</div> <!-- /row -->
 		</div>
+		
+		<!-- Author: Carlos Cornejo - functions.php
+			Description: The footer that links to Saint Juliana's website with appropriate links
+		!-->
 		<div id="footer">
 			<?php
 			include "functions.php";

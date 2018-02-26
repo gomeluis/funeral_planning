@@ -1,3 +1,16 @@
+
+<!--Designer: Carlos Cornejo
+	
+		Author: Carlos C - Functions.php
+			- Coded by Carlos C. 
+		
+				
+		Code Review: Luis Gomez & Juan Amador
+		
+		Description:  Creates the footer for all the pages
+		
+!-->
+
 <?php 
 header("Location: home.php");
 
