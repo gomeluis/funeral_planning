@@ -4,7 +4,9 @@
 		Author: Ali Alhammali ~ InitialInformation.php
 			-Ali created the select and update querys
 			- Got the information from database / update information 
-				Code Review: Luis Gomez & Juan Amador
+		Code Review: Luis Gomez & Juan Amador
+				
+		Description: Initial information from the user is being filled.
 		
 		
 !-->
@@ -964,20 +966,19 @@ if (isset($_POST['Next'])) {
 		</div>
 
 		<div id="footer">
-
-			<?php
+			
+			<!-- Author: Carlos Cornejo - functions.php		
+ 			Description: The footer that links to Saint Juliana's website with appropriate links		
+ 		!-->
+		<?php
 
 			include "functions.php";
 
 			getFooter();
 
-			?>
+		?>
 
 		</div>
-
-
-
-		
 
 	</form>
 

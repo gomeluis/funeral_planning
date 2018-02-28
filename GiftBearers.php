@@ -9,6 +9,8 @@
 				
 		Code Review: Luis Gomez & Juan Amador
 		
+		Description: User input names for gift bearers.
+		
 		
 !-->
 
@@ -27,6 +29,10 @@
 <!-- FontAwesome JS links -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
 <!-- End FontAwesome JS links -->
+	
+<!-- Google Font links -->		
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">		
+<!-- End Google Font links -->
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
     <script src="http://malsup.github.com/jquery.form.js"></script> 
@@ -303,6 +309,10 @@ if (isset($_POST['Next'])) {
 		
 	</form>
 	<div id="footer">
+		
+			<!-- Author: Carlos Cornejo - functions.php		
+ -			Description: The footer that links to Saint Juliana's website with appropriate links		
+ -		!-->
 
 			<?php
 

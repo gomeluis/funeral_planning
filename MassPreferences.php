@@ -9,6 +9,8 @@
 				
 		Code Review: Luis Gomez & Juan Amador
 		
+		Description: Allow the user to select a reading and preview them
+		
 		
 !-->
 
@@ -61,6 +63,14 @@
         <!-- Custom style links -->
         <link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
         <!-- End custom style links -->
+        
+        <!-- Google Font links -->		 +		
+ 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">		
+ 		<!-- End Google Font links -->		
+ 		
+ 		<!-- Author: Carlos V.		
+ 			Desription: Function for add more people		
+ 			-->
 		
 		<script>
 			function addNewPerson(){
@@ -827,14 +837,18 @@ $_SESSION['Funeral_id'] =$Funeral_Mass_Plan_ID;
     
 	</body>
 	<div id="footer" class = " w-10 herdre1">
+					
+		<!-- Author: Carlos Cornejo - functions.php		
+ 			Description: The footer that links to Saint Juliana's website with appropriate links		
+ 		!-->
 
-						<?php
+					<?php
 
 						include "functions.php";
 
 						getFooter();
 
-						?>
+					?>
 
 					</div>
 
