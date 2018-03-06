@@ -59,6 +59,15 @@
            
             .container {background-color:White}
             .herdre1{padding:0px;}
+			
+			.addButton{
+				background-color: green;
+				color: #FFFFFF;
+				margin-right: 40%;
+				margin-left: 7%;
+				padding: 1.5%;
+				border-radius: 5px;
+			}
         </style>
         <!-- Custom style links -->
         <link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
@@ -68,43 +77,36 @@
  		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">		
  		<!-- End Google Font links -->		
  		
- 		<!-- Author: Carlos V.		
+ 		<!-- Author: Carlos Cornejo, Carlos Velazquez		
  			Desription: Function for add more people		
- 			-->
+ 		-->
 		
 		<script>
-			function addNewPerson(){
-				//New "Name" Label
-				var labelArea = document.getElementById("nameLabel");
+			var pallCounter = 1; //Amount of textboxes so far
+
+			$(document).ready(function() {
+				//Initially, hide "limit" message
+				$("#limit").hide();
 				
-				var nLBL = document.createElement("label");
-				nLBL.appendChild(document.createTextNode("Name:"));
-				
-				labelArea.appendChild(nLBL);
-				
-				//New First Name Textbox
-				var fNameSection = document.getElementById("newFirstNameTB");
-				
-				var newFNTB = document.createElement("input");
-				newFNTB.setAttribute("type", "text");
-				newFNTB.setAttribute("name", "temp");
-				newFNTB.setAttribute("id", "temp");
-				//newFNTB.Attributes.Add("class", "form-control");
-				newFNTB.className = "form-control";
-				
-				fNameSection.appendChild(newFNTB);
-				
-				//New Last Name Textbox
-				var lNameSection = document.getElementById("newLastNameTB");
-				
-				var newLNTB = document.createElement("input");
-				newLNTB.setAttribute("type", "text");
-				newLNTB.setAttribute("name", "temp");
-				newLNTB.setAttribute("id", "temp");
-				newLNTB.className = "form-control";
-				
-				fNameSection.appendChild(newLNTB);
-			}
+				$("#addPBButton").click(function(){
+					//If there are less than 10 textboxes on the page,
+					//create another textbox and append.
+					//Also add the textbox counter
+					if(pallCounter < 10){
+						$("#pallPlacers").append('<div class="col-lg-6 col-xs-12"><div class="input-group input-group-lg push-left"><input type="text" class="form-control" placeholder="Name" name="pallPlacer' + pallCounter + '" id="pallPlacer' + pallCounter + '"></div><br></div>');
+		
+						pallCounter += 1;
+					}
+					
+					//Once counter reaches 10,
+					//show "limit" message,
+					//and hide "Add" button
+					if(pallCounter >= 10){
+						$("#limit").show();
+						$("#addPBButton").hide();	
+					}
+				});
+			});
 		</script>
     </head>
     <body>
@@ -116,7 +118,6 @@
         $username = "funeral";
         $password = "admin123";
         $dbname = 'dbfuneral';
-
 // Create connection
 $conn = new mysqli($server, $username, $password, $dbname);
 // Check connection
@@ -126,9 +127,7 @@ if ($conn->connect_error) {
 // get the primary contact person who just login to the system  and the deceased id from Previous page
 $primary_id= $_SESSION['primary_id'];
 $deceased_id =$_SESSION['deceased_id'];
-
  
-
  
  
 	// get the information from the database
@@ -153,133 +152,91 @@ $deceased_id =$_SESSION['deceased_id'];
 	
         ?>
 
-        <div class="container">
-            <form id="myForm" action="" method="post">
+    <div class="container">
+		<form id="myForm" action="" method="post">
 
-                <div class="row"> <!-- row -->
-                    
-					<div class="col-12 herdre1"> <!-- col-12 -->
-                        
-						<div class="w-10 herdre1" id="divLogoHeader">
-                            
-							<img class="img-fluid" src="/Images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">                     
-					   
-					   </div>
-                   
-					</div> <!-- /col-12 -->
-                    
-					<div class="row"> <!-- row -->
-                        
-						<div class="col-12 hidden-xs-down"> <!-- col-12 -->
-                            
-							<div class="w-100 text-center" id="step_bubbles">
-                                
-								<img class="w-50 img-fluid" src="/Images/step-bubbles-1.png" alt="Step 1 of 6">
-                           
-						   </div>
-                        
-						</div> <!-- /col-12 -->
-                    
+			<div class="row"> <!-- row -->
+				<div class="col-12 herdre1"> <!-- col-12 -->
+					<div class="w-10 herdre1" id="divLogoHeader">
+							<img class="img-fluid" src="/Images/logo-church-header.png" alt="Saint Juliana Parish" id="imgLogoHeader">
 					</div>
-                
-				</div> 
-                
-				<div >
-                    <br/>
-                    <br/>
+                </div> <!-- /col-12 -->
                     
-					<h2 class="text-center">Mass Preferences</h2>
+				<div class="row"> <!-- row -->
+                    <div class="col-12 hidden-xs-down"> <!-- col-12 -->
+                        <div class="w-100 text-center" id="step_bubbles">
+                            <img class="w-50 img-fluid" src="/Images/step-bubbles-2.png" alt="Step 1 of 6">
+                        </div>
+                    </div> <!-- /col-12 -->
+                </div> <!-- /row -->
+            </div> <!-- /row -->
                 
-				</div>
+            <div >
                 <br/>
-                
-				<div class="row"> <!--Start first row -->
-                    
-					<div class="col-lg-12 col-xs-12">
-                        
-						<h5 class="push-left">Placing of The Pall: </h5>
-                    
-					</div>
-                
-				</div> <!--END First Row -->
-
-
-                
-				<div class="row"> <!-- First Internal row -->
-                    
-					<div class="col-lg-12 col-xs-12">
-                        
-						<div class="row">
-                            
-							<div class="col-lg-6 col-xs-12"> <!--Lift First Internal row -->
-                                
-								<div class="input-group input-group-lg push-left">
-                                   
-								   <input type="text" class="form-control" placeholder="First Name" name="Placing_First_Name" id="temp" value ="<?php echo $Pall_Placer_F_name; ?>">		
-                                
-								</div>
-                                <br/>
-                            
-							</div> <!-- END Lift First Internal row -->
-
-                            
-							<div class="col-lg-6 col-xs-12"> <!--Right First Internal row -->
-                                
-								<div class="input-group input-group-lg push-left">
-                                    
-									<input type="text" class="form-control" placeholder="Last Name" name="Placing_Last_Name" id="temp" value ="<?php echo $pall_Place_L_Name; ?>">
-                                
-								</div>
-                            
-							</div> <!--END Right First Internal row -->
-                        
-						</div>	
-                    
-					</div> <!-- END First Internal row -->
-                
-				</div>   
                 <br/>
-                
-				<div class="row"> <!--Second Internal Row -->
-                    
-					<div class="col-lg-12 col-xs-12"> <!-- -->
-                        
-						<h4 class="push-left">Readings </h4>
-						
-                    </div>
+                <h2 class="text-center">Mass Preferences</h2>
+            </div>
+            <br/>
+				
+			<!-- Author: Carlos Cornejo, Carlos Velazquez - "Add Another Person" Script
+				 Description: This section needs the ability for new textboxes to be generated.
+							  The script, written by Carlos C and implemented by Carlos V, allows this feature possible.
+			-->
 
-                
-				</div><!--END Second Internal Row -->
-                <br/>
-                
-				<div class="row"> <!-- Second row lift part of the container-->
-                    <div class="col-lg-6 xs-col-12"> <!--Upper lift part of lift part of the container -->
+            <div class="row"> <!-- row -->
+                <div class="col-lg-12 col-xs-12">
+                    <h3 class="push-left">Placing of The Pall: </h3>
+						<div id="limit" name="limit"><h5 style="color: red" class="push-left">There is a limit of 10 people</h5><br/></div>
+                </div>
+            </div> <!-- /row -->
 
-                        <div class="row"><!--Third Internal Row -->
-
-                            <div class="col-lg-6 col-xs-12">
-                                
-								<h5 class="push-left" > First Readings </h5>
-
+			<div class="row"> <!-- row -->
+                <div class="col-lg-12 col-xs-12">
+                    <div class="row" id="pallPlacers" name="pallPlacers"> <!-- row -->
+                        <div class="col-lg-6 col-xs-12"><!--Lift First Internal row -->
+                            <div class="input-group input-group-lg push-left">
+								<input type="text" class="form-control" placeholder="Name" name="pallPlacer0" id="pallPlacer0">
                             </div>
                             <br/>
-                            
-							<div class="col-lg-6 col-xs-12">
-
-                                <h5 style=" color:red;" class="push-left">Old Testament</h5>
-                            
-							</div>
-
-                        </div><!--END Third Internal Row -->
-                        
-						<div class="row"><!--Fourth Internal Row -->
-                            
-							<div class="col-lg-6 col-xs-12"><!--Lift side of Fourth Internal Row -->
-                                
-								<div class="input-group input-group-lg push-left">
-                                     
-									 <select class="form-control" name="freading">
-									
+                        </div> <!-- END Lift First Internal row -->
+                    </div> <!-- /row -->
+                </div>
+            </div> <!-- /row -->
+				
+			<div class="row"> <!-- row -->
+            	<div class="col-lg-6 col-xs-12"> <!-- col-lg-6 col-xs-12 -->
+                	<div class="push-left addButton" id="addPBButton" name="addPBButton">
+                        <span class="icon">
+                            <i class="fas fa-plus-circle"></i>
+                            Add Another Person
+                        </span>
+                	</div> <!-- col-lg-6 col-xs-12 -->
+				</div>
+            </div> <!-- /row --> 
+            <br/>
+                
+			<div class="row"> <!--Second Internal Row -->
+                <div class="col-lg-12 col-xs-12"> <!-- col-lg-12 col-xs-12 -->
+                    <h4 class="push-left">Readings </h4>
+				</div>
+			</div><!--END Second Internal Row -->
+            <br/>
+                
+			<div class="row"> <!-- Second row lift part of the container-->
+                <div class="col-lg-6 xs-col-12"> <!--Upper lift part of lift part of the container -->
+					<div class="row"><!--Third Internal Row -->
+						<div class="col-lg-6 col-xs-12">
+                            <h5 class="push-left" > First Readings </h5>
+						</div>
+                        <br/>
+						<div class="col-lg-6 col-xs-12">
+							<h5 style=" color:red;" class="push-left">Old Testament</h5>
+                        </div>
+					</div><!--END Third Internal Row -->
+                    <div class="row"><!--Fourth Internal Row -->
+                        <div class="col-lg-6 col-xs-12"><!--Lift side of Fourth Internal Row -->
+                            <div class="input-group input-group-lg push-left">
+                                <select class="form-control" name="freading">
 									<option class="text-success"value=" <?php $sql = "SELECT * 
 																					FROM Reading_Prayer , Funeral_Mass_Plan 
 																					WHERE int_reading_ID = int_first_reading_ID ";
@@ -301,111 +258,64 @@ $deceased_id =$_SESSION['deceased_id'];
 																						}
 																						?> <!-- get the all first reading from reading table -->
 																						
-                                    </select>
-                                
-								</div>
-                                <br/>
-                            
-							</div><!--END Lift side of Fourth Internal Row -->
-
-                            <div class="col-lg-6 col-xs-12"><!--Right side of Fourth Internal Row -->
-                                
-								<div class="push-left">
-                                    
-									<input type="submit" class="btn btn-lg btn-block btn-green"formaction="Readingpreview.php" name="frp" value="Preview">
-                                
-								</div>
-                            
-							</div><!--Right side of Fourth Internal Row -->
-                        
-						</div> <!--END Fourth Internal Row -->
-                        <br>
-                        
-						<div class="row"><!--Fifth Internal Row -->
-                            
-							<div class="col-lg-12 col-xs-12">
-                                
-								<div class="push-left">
-                                   
-								   <h5>Reader:</h5>
-                                
-								</div>
-                            
-							</div>
-                        
-						</div><!--End Fifth Internal Row -->
-
-                        <div class="row"><!--sixth Internal Row -->
-                            
-							<div class="col-lg-6 col-xs-12"><!--Lift side of sixth Internal Row -->
-                                
-								<div class="input-group input-group-lg push-left">
-                                    
-									<input type="text" class="form-control" placeholder="First Name" name="F_Reader_First_Name" id="temp" value ="<?php echo $vchar_first_Reader_FName ; ?>">	
-                                
-								</div>
-                                <br/>
-								                            
-							</div><!--End Lift side of sixth Internal Row -->
-                            
-							<div class="col-lg-6 col-xs-12"><!--Right side of sixth Internal Row -->
-                                
-								<div class="input-group input-group-lg push-left">
-                                    
-									<input type="text" class="form-control" placeholder="Last Name" name="F_Reader_Last_Name" id="temp" value ="<?php echo $vchar_first_Reader_LName;  ?>">	
-                                
-								</div>
-                            
-							</div><!--End Right side of sixth Internal Row -->
-                        
-						</div><!--End sixth Internal Row -->
-                        
-						<br/>
-
-                    </div><!--End Upper lift part of lift part of the container -->
-
-                    <div class="col-lg-6 xs-col-12"><!-- Upper Right part of lift part of the container -->
-                        
-						<div class="row"><!--first Internal row which is empty-cells to match Lift side-->
-                            
-							<div class="col-lg-12 col-xs-12">
-                            
-							</div>
-                        
-						</div><!--End first Internal row which is empty-cells to match Lift side-->
-                        
-						<div class="row"><!--Second Empty row to match right-side -->
-                            
-							<div class="col-lg-12 col-xs-12">		 
-                            
-							</div>
-                        
-						</div><!--End Second Empty row to match right-side -->
-                        
-						<div class="row"><!--Third Internal Row -->
-
-                            <div class="col-lg-6 col-xs-12">
-                                
-								<h5 class="push-left" > Second Readings </h5>
-
+                                </select>
                             </div>
-                            
-							<div class="col-lg-6 col-xs-12">
+                            <br/>
+                        </div><!--END Lift side of Fourth Internal Row -->
+						<div class="col-lg-6 col-xs-12"><!--Right side of Fourth Internal Row -->
+                            <div class="push-left">
+                                <input type="submit" class="btn btn-lg btn-block btn-green"formaction="Readingpreview.php" name="frp" value="Preview">
+                            </div>
+                        </div><!--Right side of Fourth Internal Row -->
+                    </div> <!--END Fourth Internal Row -->
+                    <br/>
+                    
+					<div class="row"><!--Fifth Internal Row -->
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="push-left">
+                                <h5>Reader:</h5>
+                            </div>
+                        </div>
+                    </div><!--End Fifth Internal Row -->
 
-                                <h5 style=" color:red;" class="push-left">New Testament</h5>
-                            
-							</div>
+                    <div class="row"><!--sixth Internal Row -->
+                        <div class="col-lg-6 col-xs-12"><!--Lift side of sixth Internal Row -->
+                            <div class="input-group input-group-lg push-left">
+                                <input type="text" class="form-control" placeholder="First Name" name="F_Reader_First_Name" id="temp" value ="<?php echo $vchar_first_Reader_FName ; ?>">	
+                            </div>
+                            <br/>
+						</div><!--End Lift side of sixth Internal Row -->
+                        <div class="col-lg-6 col-xs-12"><!--Right side of sixth Internal Row -->
+                            <div class="input-group input-group-lg push-left">
+                                <input type="text" class="form-control" placeholder="Last Name" name="F_Reader_Last_Name" id="temp" value ="<?php echo $vchar_first_Reader_LName;  ?>">	
+                            </div>
+                        </div><!--End Right side of sixth Internal Row -->
+                    </div><!--End sixth Internal Row -->
+                    <br/>
+				</div><!--End Upper lift part of lift part of the container -->
 
-                        </div><!--End Third Internal Row -->
+                <div class="col-lg-6 xs-col-12"><!-- Upper Right part of lift part of the container -->
+                    <div class="row"><!--first Internal row which is empty-cells to match Lift side-->
+                        <div class="col-lg-12 col-xs-12"></div>
+                    </div><!--End first Internal row which is empty-cells to match Lift side-->
                         
-						<div class="row"><!-- Fourth Internal Row -->
-                            
-							<div class="col-lg-6 col-xs-12"> <!--Lift side of Fourth Internal Row -->
-                               
-							   <div class="input-group input-group-lg push-left">
-                                    
-									<select class="form-control"  name="sreading">
-									
+					<div class="row"><!--Second Empty row to match right-side -->
+                        <div class="col-lg-12 col-xs-12"></div>
+                    </div><!--End Second Empty row to match right-side -->
+                        
+					<div class="row"><!--Third Internal Row -->
+						<div class="col-lg-6 col-xs-12">
+                            <h5 class="push-left" > Second Readings </h5>
+						</div>
+                        <div class="col-lg-6 col-xs-12">
+							<h5 style=" color:red;" class="push-left">New Testament</h5>
+                        </div>
+					</div><!--End Third Internal Row -->
+                        
+					<div class="row"><!-- Fourth Internal Row -->
+                        <div class="col-lg-6 col-xs-12"> <!--Lift side of Fourth Internal Row -->
+                            <div class="input-group input-group-lg push-left">
+                                <select class="form-control"  name="sreading">
 									<option class="text-success" value=" <?php $sql = "SELECT *  
 																					FROM Reading_Prayer , Funeral_Mass_Plan 
 																					WHERE int_reading_ID = int_second_reading_ID ";
@@ -426,99 +336,58 @@ $deceased_id =$_SESSION['deceased_id'];
 																						echo "</option>";
 																						}
 																					?> <!-- get the all second reading from reading table -->
-                                    </select>
-                                
-								</div>
-                                
-								<br/>
-                            
-							</div><!--End Lift side of Fourth Internal Row -->
-                            
-							<div class="col-lg-6 col-xs-12"><!-- Right side of Fourth Internal Row -->
-                                
-								<div class="push-left">
-                                    
-									<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="srp" value="Preview">
-                                
-								</div>
-                            
-							</div><!--End Right side of Fourth Internal Row -->
+                                </select>
+                            </div>
+                            <br/>
+                        </div><!--End Lift side of Fourth Internal Row -->
+                        <div class="col-lg-6 col-xs-12"><!-- Right side of Fourth Internal Row -->
+                            <div class="push-left">
+                                <input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="srp" value="Preview">
+                            </div>
+                        </div><!--End Right side of Fourth Internal Row -->
+                    </div><!--End Fourth Internal Row -->
+                    <br/>
+                    <div class="row"><!--Fifth Internal Row -->
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="push-left">
+                                <h5>Reader:</h5>
+                            </div>
+                        </div>
+                    </div><!--End Fifth Internal Row -->
                         
-						</div><!--End Fourth Internal Row -->
-                        
-						<br/>
-                        
-						<div class="row"><!--Fifth Internal Row -->
+					<div class="row"><!--Sixth Internal Row -->
+                        <div class="col-lg-6 col-xs-12"><!--Lift side of Sixth Internal Row -->
+                            <div class="input-group input-group-lg push-left">
+                                <input type="text" class="form-control" placeholder="First Name" name="S_Reader_First_Name" id="temp" value ="<?php echo $vchar_second_Reader_FName; ?>">
+                            </div>
+                            <br/>
+                        </div><!--End Lift side of Sixth Internal Row -->
                             
-							<div class="col-lg-12 col-xs-12">
-                                
-								<div class="push-left">
-                                    
-									<h5>Reader:</h5>
-                                
-								</div>
-                            
-							</div>
-                        
-						</div><!--End Fifth Internal Row -->
-                        
-						<div class="row"><!--Sixth Internal Row -->
-                            
-							<div class="col-lg-6 col-xs-12"><!--Lift side of Sixth Internal Row -->
-                                
-								<div class="input-group input-group-lg push-left">
-                                    
-									<input type="text" class="form-control" placeholder="First Name" name="S_Reader_First_Name" id="temp" value ="<?php echo $vchar_second_Reader_FName; ?>">
-                                
-								</div>
-                                <br/>
-                            
-							</div><!--End Lift side of Sixth Internal Row -->
-                            
-							<div class="col-lg-6 col-xs-12"><!--Lift side of Sixth Internal Row -->
-                               
-							   <div class="input-group input-group-lg push-left">
-                                   
-								   <input type="text" class="form-control" placeholder="Last Name" name="S_Reader_Last_Name" id="temp" value ="<?php echo $vchar_second_Reader_LName; ?>">
-                                
-								</div>
-                                <br/>
-                            
-							</div><!--END Lift side of Sixth Internal Row -->
-                        
-						</div>			 
-                    
-					</div>			
+						<div class="col-lg-6 col-xs-12"><!--Lift side of Sixth Internal Row -->
+                            <div class="input-group input-group-lg push-left">
+                                <input type="text" class="form-control" placeholder="Last Name" name="S_Reader_Last_Name" id="temp" value ="<?php echo $vchar_second_Reader_LName; ?>">
+                            </div>
+                            <br/>
+                        </div><!--END Lift side of Sixth Internal Row -->
+                    </div>			 
+                </div>			
+            </div>
+            <br/>
                 
-				</div>
-                <br/>
-                
-				<div class="row"><!-- Third row of the container-->
-                    
-					<div class="col-lg-12 col-xs-12"><!--Third row lift part of the container-->
-                        
-						<div class="row">
-                            
-							<div class="col-lg-12 col-xs-12"><!--Lift Side Third row lift part of the container-->
+			<div class="row"><!-- Third row of the container-->
+                <div class="col-lg-12 col-xs-12"><!--Third row lift part of the container-->
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12"><!--Lift Side Third row lift part of the container-->
+                            <div class="row"> <!--First Internal Row-->
+                                <div class="col-lg-12 col-xs-12">
+                                    <h5 class="push-left">Gospel Reading:</h5>
+                                </div>
+                            </div><!--End First Internal Row-->
                                 
-								<div class="row"> <!--First Internal Row-->
-                                    
-									<div class="col-lg-12 col-xs-12">
-                                        
-										<h5 class="push-left">Gospel Reading:</h5>
-                                    
-									</div>
-                                
-								</div><!--End First Internal Row-->
-                                
-								<div class="row"><!--Second Internal Row-->
-                                    
-									<div class="col-lg-6 col-xs-12"><!--Lift Side Second Internal Row-->
-                                        
-										<div class="input-group input-group-lg push-left">
-                                            
-											<select class="form-control" name="greading">
-											
+							<div class="row"><!--Second Internal Row-->
+                                <div class="col-lg-6 col-xs-12"><!--Lift Side Second Internal Row-->
+                                    <div class="input-group input-group-lg push-left">
+                                        <select class="form-control" name="greading">
 											<option class="text-success" value=" <?php $sql = "SELECT * 
 																					FROM Reading_Prayer , Funeral_Mass_Plan 
 																					WHERE int_reading_ID = int_gospel_reading_ID ";
@@ -540,56 +409,35 @@ $deceased_id =$_SESSION['deceased_id'];
 																						}
 																					?> <!-- get the all Gospel reading from reading table -->
                                             
-											</select>
+										</select>
+                                    </div>
+                                    <br/>
+                                </div><!--End Lift Side Second Internal Row-->
+                                <div class="col-lg-6 col-xs-12"><!--Right Side Second Internal Row-->
+                                    <div class="push-left">
+                                        <input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
                                         
-										</div>
-                                       
-									   <br/>
-                                    
-									</div><!--End Lift Side Second Internal Row-->
-                                    
-									<div class="col-lg-6 col-xs-12"><!--Right Side Second Internal Row-->
-                                        
-										<div class="push-left">
-                                            
-											<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
-                                        
-										</div>
-                                        <br/>
-                                    
-									</div><!--Right Side Second Internal Row-->
-                                
-								</div><!--End Second Internal Row-->
-                            
-							</div><!--End Lift Side Third row lift part of the container-->
-                            
-							<div class="col-lg-12 col-xs-12"><!--Right Side Third row lift part of the container-->
-                            <br/><br/>
-                                
-								<div class="row">
-                                    
-									<div class="col-lg-12 col-xs-12">
-                                        
-										<h5 class="push-left">Prayers of the Faithful</h5>
-                                    
 									</div>
+                                    <br/>
+                                </div><!--Right Side Second Internal Row-->
+                            </div><!--End Second Internal Row-->
+                        </div><!--End Lift Side Third row lift part of the container-->
+                        <div class="col-lg-12 col-xs-12"><!--Right Side Third row lift part of the container-->
+                        <br/><br/>
                                 
-								</div>
+						<div class="row">
+                            <div class="col-lg-12 col-xs-12">
+                                    <h5 class="push-left">Prayers of the Faithful</h5>
+                            </div>
+                        </div>
                                 
-								<div class="row">
-                                    
-									<div class="col-lg-3 col-xs-12">
-                                        
-										<h5 class="push-left">Readings for:</h5>
-                                    
-									</div>
-                                    
-									<div class="col-lg-3 col-xs-12">
-                                        
-										<div class="input-group input-group-lg push-left">
-                                            
-											<select class="form-control" name="P_of_the_F">
-											
+						<div class="row">
+                            <div class="col-lg-3 col-xs-12">
+                                <h5 class="push-left">Readings for:</h5>
+                            </div>
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="input-group input-group-lg push-left">
+                                        <select class="form-control" name="P_of_the_F">
 											<option class="text-success" value=" <?php $sql = "SELECT * 
 																					FROM Reading_Prayer , Funeral_Mass_Plan 
 																					WHERE int_reading_ID = int_prayer_Faithfu_reading_ID ";
@@ -610,183 +458,173 @@ $deceased_id =$_SESSION['deceased_id'];
 																						}
                                                 ?> <!-- get the all Prayers of the Faithful reading from reading table -->
                                             
-											</select>
-                                        
-										</div>
+										</select>
                                     </div>
-									
-									<div class= "col-lg-6 col_xs-12">
-									
+                                </div>
+								<div class= "col-lg-6 col_xs-12">
 									<div class="push-left">
-                                    
-									<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="p_fathfull" value="Preview">
-									
+										<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="p_fathfull" value="Preview">
 									</div>
-									
-									</div>
-
+								</div>
+							</div>
+                            <br/><br/>
+                                
+							<!--Reading 1 Section-->
+                                <div class="row">
+                                	<div class="col-lg-3 col-xs-5">
+                                    	<h4 class="push-left">Reading 1</h4>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-1"></div>
+                                    <div class="col-lg-3 col-xs-5">
+                                    	<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
+                                    </div>
+                                    <div class="col-lg-4 col-xs-1"></div>
                                 </div>
                                 <br/>
-                                
-								<div class="row">
-                                    
-									<div class="col-lg-12 col-xs-12">
-                                        
-										<h5 class="push-left">Reader:</h5>
-                                    
-									</div>
-                                
-								</div>
-                                
-								<div class="row">
-                                    
-									<div class="col-lg-2 col-xs-12">
-                                        
-										<h5 class="push-left">Name:</h5>
-                                    
-									</div>
-                                    
-									<div class="col-lg-5 col-xs-12">
-                                        
-										<div class="input-group input-group-lg push-left">
-                                            
-											<input type="text" class="form-control" placeholder="First Name" name="P_Reader_First_Name" id="temp"  value ="<?php echo $int_prayer_Faithfu_reader_Fname; ?>">
-                                        
-										</div>
-                                        
-										<br/>
-                                    
-									</div>
-                                    
-									<div class="col-lg-5 col-xs-12">
-                                        
-										<div class="input-group input-group-lg push-left">
-                                            
-											<input type="text" class="form-control" placeholder="Last Name" name="P_Reader_Last_Name" id="temp"  value ="<?php echo $int_prayer_Faithfu_reader_Lname; ?>">	
-                                        
-										</div>
-										<br/>
-                                    
-									</div>
-                                    <!--Dynamically Added Name Label-->
-                                    
-									<div class="col-lg-2 col-xs-12">
-                                    	
-										<h5 class="push-left" id="nameLabel" name="nameLabel"></h5>
+                                <div class="row">
+                                    <div class="col-lg-2 col-xs-12">
+                                        <h5 class="push-left">Name:</h5>
                                     </div>
-									<!--Add new first name area-->
-									
-									<div class="col-lg-5 col-xs-12">
-                                        
-										<div class="input-group input-group-lg push-left">
-                                            
-											<div id="newFirstNameTB" name="newFirstNameTB"></div>	
-                                        
-										</div>
-                                        <br/>
-                                    
-									</div>
-									<!--Add new last name area-->
-									
-									<div class="col-lg-5 col-xs-12">
-                                        
-										<div class="input-group input-group-lg push-left">
-                                            
-											<div id="newLastNameTB" name="newLastNameTB"></div>
-                                        
-										</div>
-                                        
-										<br/>
-                                    
-									</div>
+                                    <div class="col-lg-7 col-xs-12">
+                                        <div class="input-group input-group-lg push-left">
+                                        	<input type="text" class="form-control" placeholder="Name" name="temp" id="temp">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-xs-12"></div>
+                                </div><br/><br/>
                                 
-								</div>
+								<!--Reading 2 Section-->
+                                <div class="row">
+                                	<div class="col-lg-3 col-xs-5">
+                                    	<h4 class="push-left">Reading 2</h4>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-1"></div>
+                                    <div class="col-lg-3 col-xs-5">
+                                    	<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
+                                    </div>
+                                    <div class="col-lg-4 col-xs-1"></div>
+                                </div>
                                 <br/>
-                                
-								<div class="row">
-                                    
-									<div class="col-lg-12 col-xs-12">
-                                        
-										<span class="icon-green push-left">
-                                            
-											<i class="fas fa-plus-circle"></i>
-											
-											<button type="button" class="" OnClick="addNewPerson()" >Add Another Family Member</button>
-                                            <!--<input type="submit" class="btn btn-lg btn-block btn-green" OnClick="addNewPerson()" value="Add Another Family Member">-->
-                                        
-										</span>
-                                    
-									</div>
-                                    <br/>
-
-                                
-								</div>
-                               
-							   <br/><br/>
-                            
-							</div>
-                        
-						</div>
-                        
-						<div class="row">
-                            
-							<div class="col-lg-3 col-xs-12">
-                                
-								<div class="push-left">
-                                    
-									<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Form1.php" value="Previous">
-                                
-								</div>
+                                <div class="row">
+                                    <div class="col-lg-2 col-xs-12">
+                                        <h5 class="push-left">Name:</h5>
+                                    </div>
+                                    <div class="col-lg-7 col-xs-12">
+                                        <div class="input-group input-group-lg push-left">
+                                        	<input type="text" class="form-control" placeholder="Name" name="temp" id="temp">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-xs-12"></div>
+                                </div><br/><br/>
+								
+								<!--Reading 3 Section-->
+                                <div class="row">
+                                	<div class="col-lg-3 col-xs-5">
+                                    	<h4 class="push-left">Reading 3</h4>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-1"></div>
+                                    <div class="col-lg-3 col-xs-5">
+                                    	<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
+                                    </div>
+                                    <div class="col-lg-4 col-xs-1"></div>
+                                </div>
                                 <br/>
-                            
-							</div>
-                            
-							<div class="col-lg-3 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-2 col-xs-12">
+                                        <h5 class="push-left">Name:</h5>
+                                    </div>
+                                    <div class="col-lg-7 col-xs-12">
+                                        <div class="input-group input-group-lg push-left">
+                                        	<input type="text" class="form-control" placeholder="Name" name="temp" id="temp">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-xs-12"></div>
+                                </div><br/><br/>
                                 
-								<div class="push-left">
-                                    
-									<input type="submit" class="btn btn-lg btn-block btn-green" value="Save">
-                                
-								</div>
+								<!--Reading 4 Section-->
+                                <div class="row">
+                                	<div class="col-lg-3 col-xs-5">
+                                    	<h4 class="push-left">Reading 4</h4>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-1"></div>
+                                    <div class="col-lg-3 col-xs-5">
+                                    	<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
+                                    </div>
+                                    <div class="col-lg-4 col-xs-1"></div>
+                                </div>
                                 <br/>
-                            
-							</div>
-                            
-							<div class="col-lg-3 col-xs-12">
-                                
-								<div >
-                                    
-									<input type="submit" class="btn btn-lg btn-block btn-green" value="Save & Exit">
-                                
-								</div>
+                                <div class="row">
+                                    <div class="col-lg-2 col-xs-12">
+                                        <h5 class="push-left">Name:</h5>
+                                    </div>
+                                    <div class="col-lg-7 col-xs-12">
+                                        <div class="input-group input-group-lg push-left">
+                                        	<input type="text" class="form-control" placeholder="Name" name="temp" id="temp">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-xs-12"></div>
+                                </div><br/><br/>
+								
+								<!--Reading 5 Section-->
+                                <div class="row">
+                                	<div class="col-lg-3 col-xs-5">
+                                    	<h4 class="push-left">Reading 5</h4>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-1"></div>
+                                    <div class="col-lg-3 col-xs-5">
+                                    	<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Readingpreview.php" name="grp" value="Preview">
+                                    </div>
+                                    <div class="col-lg-4 col-xs-1"></div>
+                                </div>
                                 <br/>
-                            
-							</div>
-                            
-							<div class="col-lg-3 col-xs-12">
-                                
-								<div >
-                                    
-									<input type="submit" class="btn btn-lg btn-block btn-green" value="Next" name="Next">
-                                
-								</div>
-                            
-							</div>
-                        
-						</div>
-                    
-					</div> <!--End Third row lift part of the container-->
+                                <div class="row">
+                                    <div class="col-lg-2 col-xs-12">
+                                        <h5 class="push-left">Name:</h5>
+                                    </div>
+                                    <div class="col-lg-7 col-xs-12">
+                                        <div class="input-group input-group-lg push-left">
+                                        	<input type="text" class="form-control" placeholder="Name" name="temp" id="temp">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-xs-12"></div>
+                                </div><br/><br/>
+								
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-xs-12">
+                                <div class="push-left">
+                                    <input type="submit" class="btn btn-lg btn-block btn-green" value="Previous">
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="col-lg-3 col-xs-12">
+                                <div class="push-left">
+                                    <input type="submit" class="btn btn-lg btn-block btn-green" value="Save">
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="col-lg-3 col-xs-12">
+                                <div >
+                                    <input type="submit" class="btn btn-lg btn-block btn-green" value="Save & Exit">
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="col-lg-3 col-xs-12">
+                                <div >
+                                    <input type="submit" class="btn btn-lg btn-block btn-green" value="Next">
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--End Third row lift part of the container-->
 
                     <br/><br/><br/><br/>
             </form>
 				<div id="footer" style="width: 100%;">
 
 						<?php
-
 						include "functions.php";
-
 						getFooter();
-
 						?>
 
 					</div>
@@ -811,7 +649,6 @@ if (isset($_POST['Next'])) {
 			$P_Reader_Last_Name = $_REQUEST["P_Reader_Last_Name"];
 			
 			
-
 			 // update the query to update the information  the database
 			
 			$Mass_Preferences_Rquery = "Update Funeral_Mass_Plan 
@@ -843,11 +680,8 @@ $_SESSION['Funeral_id'] =$Funeral_Mass_Plan_ID;
  		!-->
 
 					<?php
-
 						include "functions.php";
-
 						getFooter();
-
 					?>
 
 					</div>
