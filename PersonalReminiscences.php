@@ -21,6 +21,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <!-- End Bootstrap links -->
 
+<!-- Icon -->
+<link rel="shortcut icon" type="image/png" href="/Images/logo-church-header-simple.png"/>
+<!-- End Icon --> 
+
 <!-- FontAwesome JS links -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
 <!-- End FontAwesome JS links -->
@@ -73,7 +77,7 @@
 				</div> <!-- /col-12 -->
 				<div class="col-12"> <!-- col-12 -->
 					<div class="form-group push-left push-right">
-    					<textarea class="form-control" id="temp" rows="3"></textarea>
+    					<textarea class="form-control" id="faith_Question_res" rows="3"></textarea>
   					</div>
   				<br>
   				<br>
@@ -86,7 +90,7 @@
 				</div> <!-- /col-12 -->
 				<div class="col-12"> <!-- col-12 -->
 					<div class="form-group push-left push-right">
-    					<textarea class="form-control" id="temp" rows="3"></textarea>
+    					<textarea class="form-control" id="gospel_Question_res" rows="3"></textarea>
   					</div>
   				<br>
   				<br>
@@ -99,7 +103,7 @@
 				</div> <!-- /col-12 -->
 				<div class="col-12"> <!-- col-12 -->
 					<div class="form-group push-left push-right">
-    					<textarea class="form-control" id="temp" rows="3"></textarea>
+    					<textarea class="form-control" id="other_Info_res" rows="3"></textarea>
   					</div>
   				<br>
   				<br>
