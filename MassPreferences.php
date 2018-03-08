@@ -9,8 +9,6 @@
 				
 		Code Review: Luis Gomez & Juan Amador
 		
-		Description: Allow the user to select a reading and preview them
-		
 		
 !-->
 
@@ -32,26 +30,7 @@
     <script src="http://malsup.github.com/jquery.form.js"></script> 
 		 <!--  End Ajax links -->
 		 <!--   Ajax script to test the update without refreshing the page  -->
-		    <script> 
-        
-        $(document).ready(function() { 
-            
-            $('#myForm').ajaxForm(function() { 
-			
-			
-			var txt;
-    if (confirm("If you click Ok you are going to next Page, If you click cancel you are stay in this page !")) {
-        txt = "OK!";
-		window.location.href = "http://cpscserv.dom.edu/students/alhamali/PHP/MassPreferences/GiftBearers.php";
-    } else {
-        txt = "Cancel!";
-    }
-                  
-				 
-				  
-            }); 
-        }); 
-    </script>
+
 
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid Serif">
@@ -63,14 +42,6 @@
         <!-- Custom style links -->
         <link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
         <!-- End custom style links -->
-        
-        <!-- Google Font links -->		 +		
- 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">		
- 		<!-- End Google Font links -->		
- 		
- 		<!-- Author: Carlos V.		
- 			Desription: Function for add more people		
- 			-->
 		
 		<script>
 			function addNewPerson(){
@@ -112,6 +83,18 @@
      <?php
         session_start();
 		
+		
+	$_SESSION['primCont_Email'];
+	$_SESSION['primCont_password'];
+
+if(!isset($_SESSION['primCont_Email']) || empty($_SESSION['primCont_password'])){
+
+  header("location: signin.php");
+
+  exit;
+
+}
+		
         $server = "funeralinstance.cfg8tyxsms9d.us-east-2.rds.amazonaws.com";
         $username = "funeral";
         $password = "admin123";
@@ -126,27 +109,115 @@ if ($conn->connect_error) {
 // get the primary contact person who just login to the system  and the deceased id from Previous page
 $primary_id= $_SESSION['primary_id'];
 $deceased_id =$_SESSION['deceased_id'];
+ $sqlForm2 = "SELECT * FROM Funeral_Mass_Plan INNER JOIN Deceased ON Deceased.int_deceased_ID = Funeral_Mass_Plan.int_deceased_ID  WHERE Funeral_Mass_Plan.int_deceased_ID = '$deceased_id'";
+    $resultForm2 = $conn->query($sqlForm2);
+	if ($rowSelected= $resultForm2->fetch_assoc()) {
+		$Funeral_Mass_Plan_ID= $rowSelected['int_funeral_ID'];
+	}
+			$Placing_First_Name = $_REQUEST['Placing_First_Name'];
+			$Placing_Last_Name = $_REQUEST["Placing_Last_Name"];
+			
+			$freading = $_REQUEST["freading"];
+			$F_Reader_First_Name = $_REQUEST["F_Reader_First_Name"];
+			$F_Reader_Last_Name = $_REQUEST["F_Reader_Last_Name"];
+			
+			$sreading = $_REQUEST["sreading"];
+			$S_Reader_First_Name = $_REQUEST["S_Reader_First_Name"];
+			$S_Reader_Last_Name =$_REQUEST["S_Reader_Last_Name"];
+			
+			$greading = $_REQUEST["greading"];
+			
+			$P_of_the_F = $_REQUEST["P_of_the_F"];
+			$P_Reader_First_Name = $_REQUEST["P_Reader_First_Name"];
+			$P_Reader_Last_Name = $_REQUEST["P_Reader_Last_Name"];
+			
+			
+			
+if (isset($_POST['Next'])) {
+         
+			 // update the query to update the information  the database
+			
+			$Mass_Preferences_Rquery = "Update Funeral_Mass_Plan 
+			SET vchar_pall_Placer_F_name = '$Placing_First_Name', vchar_pall_Place_L_Name = '$Placing_Last_Name',
+			int_first_reading_ID ='$freading', vchar_first_Reader_FName = '$F_Reader_First_Name',
+			vchar_first_Reader_LName = '$F_Reader_Last_Name', int_second_reading_ID = '$sreading',
+			vchar_second_Reader_FName ='$S_Reader_First_Name', vchar_second_Reader_LName = '$S_Reader_Last_Name', int_gospel_reading_ID = '$greading', 
+			int_prayer_Faithfu_reading_ID = '$P_of_the_F',  int_prayer_Faithfu_reader_Fname ='$P_Reader_First_Name', int_prayer_Faithfu_reader_Lname = '$P_Reader_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$result = $conn->query($Mass_Preferences_Rquery);
+			header("Location: GiftBearers.php");
+	
+	}
+	if (isset($_POST['Exit'])) {
 
- 
+			 // update the query to update the information  the database
+			
+			$Mass_Preferences_Rquery = "Update Funeral_Mass_Plan 
+			SET vchar_pall_Placer_F_name = '$Placing_First_Name', vchar_pall_Place_L_Name = '$Placing_Last_Name',
+			int_first_reading_ID ='$freading', vchar_first_Reader_FName = '$F_Reader_First_Name',
+			vchar_first_Reader_LName = '$F_Reader_Last_Name', int_second_reading_ID = '$sreading',
+			vchar_second_Reader_FName ='$S_Reader_First_Name', vchar_second_Reader_LName = '$S_Reader_Last_Name', int_gospel_reading_ID = '$greading', 
+			int_prayer_Faithfu_reading_ID = '$P_of_the_F',  int_prayer_Faithfu_reader_Fname ='$P_Reader_First_Name', int_prayer_Faithfu_reader_Lname = '$P_Reader_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$result = $conn->query($Mass_Preferences_Rquery);
+			unset($_SESSION["primCont_Email"]);
+			header("location: signin.php");
+	
+	}
+	if (isset($_POST['save'])) {
+
+			
+			
+
+			 // update the query to update the information  the database
+			
+			$Mass_Preferences_Rquery = "Update Funeral_Mass_Plan 
+			SET vchar_pall_Placer_F_name = '$Placing_First_Name', vchar_pall_Place_L_Name = '$Placing_Last_Name',
+			int_first_reading_ID ='$freading', vchar_first_Reader_FName = '$F_Reader_First_Name',
+			vchar_first_Reader_LName = '$F_Reader_Last_Name', int_second_reading_ID = '$sreading',
+			vchar_second_Reader_FName ='$S_Reader_First_Name', vchar_second_Reader_LName = '$S_Reader_Last_Name', int_gospel_reading_ID = '$greading', 
+			int_prayer_Faithfu_reading_ID = '$P_of_the_F',  int_prayer_Faithfu_reader_Fname ='$P_Reader_First_Name', int_prayer_Faithfu_reader_Lname = '$P_Reader_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$result = $conn->query($Mass_Preferences_Rquery);
+			header("Location: MassPreferences.php");
+	
+	}
+	
+		if (isset($_POST['Previous'])) {
+         
+			 // update the query to update the information  the database
+			
+			$Mass_Preferences_Rquery = "Update Funeral_Mass_Plan 
+			SET vchar_pall_Placer_F_name = '$Placing_First_Name', vchar_pall_Place_L_Name = '$Placing_Last_Name',
+			int_first_reading_ID ='$freading', vchar_first_Reader_FName = '$F_Reader_First_Name',
+			vchar_first_Reader_LName = '$F_Reader_Last_Name', int_second_reading_ID = '$sreading',
+			vchar_second_Reader_FName ='$S_Reader_First_Name', vchar_second_Reader_LName = '$S_Reader_Last_Name', int_gospel_reading_ID = '$greading', 
+			int_prayer_Faithfu_reading_ID = '$P_of_the_F',  int_prayer_Faithfu_reader_Fname ='$P_Reader_First_Name', int_prayer_Faithfu_reader_Lname = '$P_Reader_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$result = $conn->query($Mass_Preferences_Rquery);
+			header("Location: InitialInformation.php");
+	
+	}
 
  
  
 	// get the information from the database
  $sqlForm2 = "SELECT * FROM Funeral_Mass_Plan INNER JOIN Deceased ON Deceased.int_deceased_ID = Funeral_Mass_Plan.int_deceased_ID  WHERE Funeral_Mass_Plan.int_deceased_ID = '$deceased_id'";
     $resultForm2 = $conn->query($sqlForm2);
-	if ($rowSwlected= $resultForm2->fetch_assoc()) {
-		$Funeral_Mass_Plan_ID= $rowSwlected['int_funeral_ID'];
+	if ($rowSelected= $resultForm2->fetch_assoc()) {
+		$Funeral_Mass_Plan_ID= $rowSelected['int_funeral_ID'];
 		
-		 $Pall_Placer_F_name = $rowSwlected["vchar_pall_Placer_F_name"];
+		 $Pall_Placer_F_name = $rowSelected["vchar_pall_Placer_F_name"];
 		 
-		 $pall_Place_L_Name = $rowSwlected["vchar_pall_Place_L_Name"];
-		 $vchar_first_Reader_FName = $rowSwlected["vchar_first_Reader_FName"];
-		 $vchar_first_Reader_LName = $rowSwlected["vchar_first_Reader_LName"];
-		 $vchar_second_Reader_FName = $rowSwlected["vchar_second_Reader_FName"];
-		 $vchar_second_Reader_LName = $rowSwlected["vchar_second_Reader_LName"];
-		 $int_prayer_Faithfu_reader_Fname = $rowSwlected["int_prayer_Faithfu_reader_Fname"];
-		 $int_prayer_Faithfu_reader_Lname = $rowSwlected["int_prayer_Faithfu_reader_Lname"];
+		 $pall_Place_L_Name = $rowSelected["vchar_pall_Place_L_Name"];
+		 $vchar_first_Reader_FName = $rowSelected["vchar_first_Reader_FName"];
+		 $vchar_first_Reader_LName = $rowSelected["vchar_first_Reader_LName"];
+		 $vchar_second_Reader_FName = $rowSelected["vchar_second_Reader_FName"];
+		 $vchar_second_Reader_LName = $rowSelected["vchar_second_Reader_LName"];
+		 $int_prayer_Faithfu_reader_Fname = $rowSelected["int_prayer_Faithfu_reader_Fname"];
+		 $int_prayer_Faithfu_reader_Lname = $rowSelected["int_prayer_Faithfu_reader_Lname"];
 		 $_SESSION['Funeral_id'] =$Funeral_Mass_Plan_ID;
+		 
 		
 	
 	}
@@ -299,6 +370,7 @@ $deceased_id =$_SESSION['deceased_id'];
 																						echo $row['vchar_title'];
 																						echo "</option>";
 																						}
+																						
 																						?> <!-- get the all first reading from reading table -->
 																						
                                     </select>
@@ -734,7 +806,7 @@ $deceased_id =$_SESSION['deceased_id'];
                                 
 								<div class="push-left">
                                     
-									<input type="submit" class="btn btn-lg btn-block btn-green" formaction="Form1.php" value="Previous">
+									<input type="submit" class="btn btn-lg btn-block btn-green"  value="Previous" name="Previous" >
                                 
 								</div>
                                 <br/>
@@ -745,7 +817,7 @@ $deceased_id =$_SESSION['deceased_id'];
                                 
 								<div class="push-left">
                                     
-									<input type="submit" class="btn btn-lg btn-block btn-green" value="Save">
+									<input type="submit" class="btn btn-lg btn-block btn-green" value="Save" name = "save">
                                 
 								</div>
                                 <br/>
@@ -756,7 +828,7 @@ $deceased_id =$_SESSION['deceased_id'];
                                 
 								<div >
                                     
-									<input type="submit" class="btn btn-lg btn-block btn-green" value="Save & Exit">
+									<input type="submit" class="btn btn-lg btn-block btn-green" value="Save & Exit" name = "Exit">
                                 
 								</div>
                                 <br/>
@@ -790,65 +862,20 @@ $deceased_id =$_SESSION['deceased_id'];
 						?>
 
 					</div>
-				<?php
-	// get the information from the form 
-if (isset($_POST['Next'])) {
-            $Placing_First_Name = $_REQUEST['Placing_First_Name'];
-			$Placing_Last_Name = $_REQUEST["Placing_Last_Name"];
-			
-			$freading = $_REQUEST["freading"];
-			$F_Reader_First_Name = $_REQUEST["F_Reader_First_Name"];
-			$F_Reader_Last_Name = $_REQUEST["F_Reader_Last_Name"];
-			
-			$sreading = $_REQUEST["sreading"];
-			$S_Reader_First_Name = $_REQUEST["S_Reader_First_Name"];
-			$S_Reader_Last_Name =$_REQUEST["S_Reader_Last_Name"];
-			
-			$greading = $_REQUEST["greading"];
-			
-			$P_of_the_F = $_REQUEST["P_of_the_F"];
-			$P_Reader_First_Name = $_REQUEST["P_Reader_First_Name"];
-			$P_Reader_Last_Name = $_REQUEST["P_Reader_Last_Name"];
-			
-			
 
-			 // update the query to update the information  the database
-			
-			$Mass_Preferences_Rquery = "Update Funeral_Mass_Plan 
-			SET vchar_pall_Placer_F_name = '$Placing_First_Name', vchar_pall_Place_L_Name = '$Placing_Last_Name',
-			int_first_reading_ID ='$freading', vchar_first_Reader_FName = '$F_Reader_First_Name',
-			vchar_first_Reader_LName = '$F_Reader_Last_Name', int_second_reading_ID = '$sreading',
-			vchar_second_Reader_FName ='$S_Reader_First_Name', vchar_second_Reader_LName = '$S_Reader_Last_Name', int_gospel_reading_ID = '$greading', 
-			int_prayer_Faithfu_reading_ID = '$P_of_the_F',  int_prayer_Faithfu_reader_Fname ='$P_Reader_First_Name', int_prayer_Faithfu_reader_Lname = '$P_Reader_Last_Name'
-			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
-			$result = $conn->query($Mass_Preferences_Rquery);
-			
-			
-		
-	
-	}
-$_SESSION['Funeral_id'] =$Funeral_Mass_Plan_ID;
-	
-	$_SESSION['select'];
-			
-?>
         
 		</div> <!--END container -->
     
 	</body>
 	<div id="footer" class = " w-10 herdre1">
-					
-		<!-- Author: Carlos Cornejo - functions.php		
- 			Description: The footer that links to Saint Juliana's website with appropriate links		
- 		!-->
 
-					<?php
+						<?php
 
 						include "functions.php";
 
 						getFooter();
 
-					?>
+						?>
 
 					</div>
 

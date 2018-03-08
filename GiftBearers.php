@@ -9,8 +9,6 @@
 				
 		Code Review: Luis Gomez & Juan Amador
 		
-		Description: User input names for gift bearers.
-		
 		
 !-->
 
@@ -29,37 +27,9 @@
 <!-- FontAwesome JS links -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
 <!-- End FontAwesome JS links -->
-	
-<!-- Google Font links -->		
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">		
-<!-- End Google Font links -->
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script> 
-		
-		    <script> 
-        
-        $(document).ready(function() { 
-            
-            $('#myForm').ajaxForm(function() { 
-			
-			
-			var txt;
-    if (confirm("If you click Ok you are going to next Page, If you click cancel you are stay in this page !")) {
-        txt = "OK!";
-		window.location.href = "http://cpscserv.dom.edu/students/alhamali/PHP/MassPreferences/GiftBearers.php";
-    } else {
-        txt = "Cancel!";
-    }
-                  
-				 
-				  
-            }); 
-        }); 
-    </script>
-
-
-
 
 <!-- Custom style links -->
 <link rel="stylesheet" type="text/css" href="/Styles/styles.css" />
@@ -68,7 +38,18 @@
 <title>Gift Bearers</title>
 </head>
 <?php
-  session_start();
+	session_set_cookie_params(0);
+	session_start();
+    $_SESSION['primCont_Email'];
+	$_SESSION['primCont_password'];
+
+if(!isset($_SESSION['primCont_Email']) || empty($_SESSION['primCont_password'])){
+
+  header("location: signin.php");
+
+  exit;
+
+}
   
      $server = "funeralinstance.cfg8tyxsms9d.us-east-2.rds.amazonaws.com";
         $username = "funeral";
@@ -81,7 +62,43 @@ $conn = new mysqli($server, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
+$_SESSION['Funeral_id'];
 $Funeral_Mass_Plan_ID = $_SESSION['Funeral_id'];
+$Bearer_First_First_Name = $_REQUEST["Bearer_First_First_Name"];
+			$Bearer_First_Last_Name = $_REQUEST["Bearer_First_Last_Name"];
+			$Bearer_Second_First_Name = $_REQUEST["Bearer_Second_First_Name"];
+			$Bearer_Second_Last_Name = $_REQUEST["Bearer_Second_Last_Name"];
+if (isset($_POST['save'])) {
+			$Gift_Bearers = "Update Funeral_Mass_Plan 
+			SET vchar_gift_Bearer_First_First_Name = '$Bearer_First_First_Name' ,vchar_gift_Bearer_First_Last_Name = '$Bearer_First_Last_Name' , vchar_gift_Bearer_Second_First_Name = '$Bearer_Second_First_Name', vchar_gift_Bearer_Second_Last_Name = '$Bearer_Second_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$results = $conn->query($Gift_Bearers);
+			header("Location:  GiftBearers.php");
+}
+if (isset($_POST['Next'])) {
+			$Gift_Bearers = "Update Funeral_Mass_Plan 
+			SET vchar_gift_Bearer_First_First_Name = '$Bearer_First_First_Name' ,vchar_gift_Bearer_First_Last_Name = '$Bearer_First_Last_Name' , vchar_gift_Bearer_Second_First_Name = '$Bearer_Second_First_Name', vchar_gift_Bearer_Second_Last_Name = '$Bearer_Second_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$results = $conn->query($Gift_Bearers);
+			header("Location:  MusicSelection.php");
+}
+if (isset($_POST['Exit'])) {
+			$Gift_Bearers = "Update Funeral_Mass_Plan 
+			SET vchar_gift_Bearer_First_First_Name = '$Bearer_First_First_Name' ,vchar_gift_Bearer_First_Last_Name = '$Bearer_First_Last_Name' , vchar_gift_Bearer_Second_First_Name = '$Bearer_Second_First_Name', vchar_gift_Bearer_Second_Last_Name = '$Bearer_Second_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$results = $conn->query($Gift_Bearers);
+			unset($_SESSION["primCont_Email"]); 
+			header("Location: signin.php");
+}
+if (isset($_POST['Previous'])) {
+			$Gift_Bearers = "Update Funeral_Mass_Plan 
+			SET vchar_gift_Bearer_First_First_Name = '$Bearer_First_First_Name' ,vchar_gift_Bearer_First_Last_Name = '$Bearer_First_Last_Name' , vchar_gift_Bearer_Second_First_Name = '$Bearer_Second_First_Name', vchar_gift_Bearer_Second_Last_Name = '$Bearer_Second_Last_Name'
+			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
+			$results = $conn->query($Gift_Bearers);
+			header("Location:  MassPreferences.php");
+}
+
+
 
 
 // select the data from database
@@ -100,12 +117,14 @@ $Funeral_Mass_Plan_ID = $_SESSION['Funeral_id'];
  
  
 ?>
+
+
 <body>
 
 
 <div class="container"> <!-- container -->
 
-	<form id="myForm" action="#" method="post">
+	<form id="myForm"  method="post">
 	
 		<div class="row"> <!-- row -->
 		
@@ -243,7 +262,7 @@ $Funeral_Mass_Plan_ID = $_SESSION['Funeral_id'];
 				
  					<div class="push-left">
 					
- 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Save">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green"name="save" value="Save">
 						
 					</div>
 				<br>
@@ -252,7 +271,7 @@ $Funeral_Mass_Plan_ID = $_SESSION['Funeral_id'];
  					
 					<div class="push-right">
 					
- 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Save & Exit">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Save & Exit" name="Exit">
 					</div>
 				<br>
  				</div> <!-- /col-6 -->
@@ -264,7 +283,7 @@ $Funeral_Mass_Plan_ID = $_SESSION['Funeral_id'];
 				
  					<div class="push-left push-right" id="btnNext">
 					
- 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Next" name ="Next">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green"  value="Next" name ="Next">
 						
 					</div>
 					<br>
@@ -273,46 +292,20 @@ $Funeral_Mass_Plan_ID = $_SESSION['Funeral_id'];
 				
  					<div class="push-right push-left" id="btnPrev">
 					
- 						<input type="submit" class="btn btn-lg btn-block btn-green" formaction="MassPreferences.php" value="Previous">
+ 						<input type="submit" class="btn btn-lg btn-block btn-green" value="Previous" name="Previous">
 						
 					</div>
 					<br>
+					
  				</div> <!-- /col-12 /col-md-6 -->
  			</div> <!-- /row -->
             
                                         
 		</div> <!-- /MainForm -->
-		<?php
-if (isset($_POST['Next'])) {
-				/// get data from the form 
-			$Bearer_First_First_Name = $_REQUEST["Bearer_First_First_Name"];
-			$Bearer_First_Last_Name = $_REQUEST["Bearer_First_Last_Name"];
-			$Bearer_Second_First_Name = $_REQUEST["Bearer_Second_First_Name"];
-			$Bearer_Second_Last_Name = $_REQUEST["Bearer_Second_Last_Name"];
-				
-				// update data into database
-			$Gift_Bearers = "Update Funeral_Mass_Plan 
-			SET vchar_gift_Bearer_First_First_Name = '$Bearer_First_First_Name' ,vchar_gift_Bearer_First_Last_Name = '$Bearer_First_Last_Name' , vchar_gift_Bearer_Second_First_Name = '$Bearer_Second_First_Name', vchar_gift_Bearer_Second_Last_Name = '$Bearer_Second_Last_Name'
-			WHERE int_funeral_ID= '$Funeral_Mass_Plan_ID'";
-			$result = $conn->query($Gift_Bearers);
 
-
-}
-
-			header("Location: MusicSelection.php");
-
-
-
-
-
-?>
 		
 	</form>
 	<div id="footer">
-		
-			<!-- Author: Carlos Cornejo - functions.php		
- -			Description: The footer that links to Saint Juliana's website with appropriate links		
- -		!-->
 
 			<?php
 
