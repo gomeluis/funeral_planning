@@ -140,7 +140,7 @@
 			</div>  
             <div class="row"> <!-- row -->
                <div class="col-12 col-sm-6 push-left">
-					<h5>Deceased's Address: <?php echo $_SESSION['dec_Address']; ?> </h5>       
+					<h5>Address: <?php  ?> </h5>       
                 </div>
             </div> <!-- /row -->
             
