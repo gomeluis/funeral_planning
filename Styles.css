@@ -1,0 +1,218 @@
+/* CSS Document */
+body{
+	background-color: #051c38;	
+}
+a.noMarkup{
+    text-decoration: none;
+	color: inherit;
+}
+.btn-green{
+	background-color: #137513;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+#divLogoHeader{
+	background-color: #051c38;
+}
+#step_bubbles{
+	padding: 0.8%;
+	background-color: #006A00;
+}
+#MainForm{
+	background-color: #FFFFFF;
+}
+#addMorePall{
+	cursor: pointer;	
+}
+@media screen and (max-width: 576px){
+	#divLogoHeader{
+		background-color: #051c38;
+		position:absolute;
+		left:0;
+		right:0;
+		z-index: 15;
+	}
+}
+@media screen and (min-width: 577px){
+	.push-left{
+		padding-left: 25px;
+	}
+	.push-right{
+		padding-right: 25px;
+	}
+}
+@media screen and (min-width: 768px){
+	#btnNext{
+		margin-left: -25px;
+	}
+	#btnPrev{
+		margin-right: -25px;
+	}
+}
+@media screen and (max-width: 576px){
+	#deceasedHeader{
+		margin-top: 12vw;
+	}	
+}
+
+/*
+ __    __    ______   .___  ___.  _______ 
+|  |  |  |  /  __  \  |   \/   | |   ____|
+|  |__|  | |  |  |  | |  \  /  | |  |__   
+|   __   | |  |  |  | |  |\/|  | |   __|  
+|  |  |  | |  `--'  | |  |  |  | |  |____ 
+|__|  |__|  \______/  |__|  |__| |_______|
+*/
+
+.bg-blue{
+	background-color: #051c38;
+}
+.text-white{
+	color: #FFFFFF;
+}
+.border-green{
+	border: 1px solid #137513;
+	border-radius: 5px;
+}
+.text-eq-height{
+	height: 7vh;	
+}
+
+@media screen and (max-width: 576px){
+	.logo-fluid{
+		width: 45%;
+	}	
+}
+@media screen and (max-width: 991px){
+	.logo-fluid{
+		width: 35%;
+	}	
+}
+@media screen and (min-width: 992px){
+	.logo-fluid{
+		width: 20%;
+	}	
+}
+
+/* 
+     _______. __    _______ .__   __.     __  .__   __. 
+    /       ||  |  /  _____||  \ |  |    |  | |  \ |  | 
+   |   (----`|  | |  |  __  |   \|  |    |  | |   \|  | 
+    \   \    |  | |  | |_ | |  . `  |    |  | |  . `  | 
+.----)   |   |  | |  |__| | |  |\   |    |  | |  |\   | 
+|_______/    |__|  \______| |__| \__|    |__| |__| \__| 
+                                                        
+*/
+
+.login-header{
+    background-color: #182d47;
+	border-radius: 0%;	
+}
+.icon-green{
+	color: #137513;
+}
+.loginWrapper{
+	background-color:#FFFFFF;
+	border-radius: 15px;
+	display: inline-block;
+}
+#bannerName{
+	color: #182d47;
+}
+
+@media screen and (min-width: 577px){
+	.loginWrapper{
+		margin-top: 8vw;
+	}
+}
+
+@media screen and (max-width: 576px){
+	body{
+		background-color: #FFFFFF;
+	}
+	.loginWrapper{
+		border-radius: 0px;
+	}
+}
+
+
+/*
+.__   __.      ___   ____    ____ .______        ___      .______      
+|  \ |  |     /   \  \   \  /   / |   _  \      /   \     |   _  \     
+|   \|  |    /  ^  \  \   \/   /  |  |_)  |    /  ^  \    |  |_)  |    
+|  . `  |   /  /_\  \  \      /   |   _  <    /  /_\  \   |      /     
+|  |\   |  /  _____  \  \    /    |  |_)  |  /  _____  \  |  |\  \----.
+|__| \__| /__/     \__\  \__/     |______/  /__/     \__\ | _| `._____|
+*/
+
+.nav-green{
+	background-color: #006A00;
+	
+}
+@media screen and (max-width: 576px){
+	nav.nav-green{
+		position:absolute;
+		left:0;
+		right:0;
+		z-index: 10;
+		padding-top: 15px;
+		padding-bottom: 10px;
+	}
+	.nav-green{
+		margin-top: 10vw;
+	}	
+	#deceasedColHeader{
+		pointer-events: none;
+		margin-top: 24vw;
+	}	
+}
+
+/*
+_______   ______     ______   .___________. _______ .______      
+|   ____| /  __  \   /  __  \  |           ||   ____||   _  \     
+|  |__   |  |  |  | |  |  |  | `---|  |----`|  |__   |  |_)  |    
+|   __|  |  |  |  | |  |  |  |     |  |     |   __|  |      /     
+|  |     |  `--'  | |  `--'  |     |  |     |  |____ |  |\  \----.
+|__|      \______/   \______/      |__|     |_______|| _| `._____|
+                                                                  
+*/
+
+.footerHeader{
+	font-size: 1em !important;	
+	letter-spacing: 3px;
+}
+.footer-push-left{
+	padding-left: 40px;	
+}
+.footer-push-right{
+	padding-right: 40px;	
+}
+.icon-push{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+@media screen and (max-width: 576px){
+	.fullFooter{
+		background-color: #006A00;	
+		color: #FFFFFF;
+		font-size: 0.7em;
+		line-height: 130%;
+		font-family: 'Roboto';
+		letter-spacing: 2.5px;
+	}
+	.text-xs-center{
+		text-align: center;	
+	}
+}
+@media screen and (min-width: 577px){
+	#footer{
+		background-color: #006A00;	
+		color: #FFFFFF;
+		font-size: 0.7em;
+		line-height: 130%;
+		left:0;
+		right:0;
+		font-family: 'Roboto';
+		letter-spacing: 2.5px;
+	}
+}
