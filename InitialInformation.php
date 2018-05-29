@@ -3,9 +3,11 @@
 	
 		Author: Ali Alhammali Luis Gomez & Juan Amador ~InitialInformation.php
 			-Ali created the SELECT AND UPDATE queries
+			- Yazeed Almutairi: update the tables in MySql
 			- Juan change the design to match the client needs 
 			- Apply the footer 
 			- Luis Code Review: Luis Gomez & Juan Amador
+			
 		
 		Description: the user can see the information that belong him/her and cane edit them .
 		
